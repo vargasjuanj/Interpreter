@@ -4,7 +4,7 @@ grammar Simple; //Encabezado. PUede llevar otras configuraciones.
 //             PARSER -> Usa la gramática libre de contexto
 
 start
-:
+:cd 
 HELLO WORLD
 ;
 
