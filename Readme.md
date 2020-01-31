@@ -1,0 +1,1 @@
+Es importante saber que para que VCode tome el jar de antl debe crearse la carpeta lib en la raiz del proyecto e incluir el jar correspondiente. 
