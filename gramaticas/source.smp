@@ -1,8 +1,8 @@
 program miprograma{
 
-var x=5;
-printl x+2*4;
-var z= 5==5;
-var y = x + 4 > 2 && x -4 < 5;
-printl y;
+var x;
+
+x=5;
+
+println 6;
 }

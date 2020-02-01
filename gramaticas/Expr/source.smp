@@ -1,8 +1,0 @@
-program miprograma{
-
-var x;
-
-x=5;
-
-printl 6;
-}
