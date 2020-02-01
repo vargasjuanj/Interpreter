@@ -3,7 +3,7 @@ grammar Simple; //Encabezado. PUede llevar otras configuraciones.
 import java.util.Map;
 import java.util.HashMap;
 }
-@parser::members{
+@parser::members{ //Colocamos esto acá porque cada vez que generamos los archivos se va a borar del parser
 
 Map<String,Object> symbolTable = new HashMap<String,Object>();
  }
@@ -47,9 +47,18 @@ var_assign: ID ASSIGN expresion SEMICOLON
 println: PRINTLN expresion SEMICOLON
 {System.out.println($expresion.value);}; //Acordarse de ponerle el punto y coma a la sentencia, si no salta error en el SimpleLexer
 expresion returns [Object value]:  //Para usar este atributo hay que insertarle un valor en la produccion en el NUMBER E ID 
+//expresion PLUS expresion  //Recursividad por la izquierda
+t1=term {$value=(int)$t1.value;} (PLUS t2=term  //Se almacena t1 y se continua con t2, t1 ya no se toca
+{$value=(int)$value+(int)$t2.value;} )*
+;
+
+term returns [Object value]:
 NUMBER {$value=Integer.parseInt( $NUMBER.text) ;}  // Hay que recuperar la información correspondiente a ese token, el lexema->Texto particular identificado por un token (Como instancia de token, el string 5, 6 metc)
 |
  ID  {$value=symbolTable.get($ID.text);};  //Para recuperar el valor de un número o el identificador debemos agregarle un atributo, y ese atributo se va a usar en los producciones que usan este no terminal y de ahi sacar su valor, por ejemplo la produccion println lo usa
+
+
+
 /*
 returns [Object.value] -> Indica que ese no terminal posee un atributo value de tipo Object.
 Puede ser de cualquier otro tipo, pero con ese Objecto podemos almacenar tanto valores númericos como Strings( en el caso del identificador)-
