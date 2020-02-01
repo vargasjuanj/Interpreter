@@ -1,4 +1,13 @@
 grammar Simple; //Encabezado. PUede llevar otras configuraciones.
+@parser::header{
+import java.util.Map;
+import java.util.HashMap;
+}
+@parser::members{
+
+Map<String,Object> symbolTable = new HashMap<String,Object>();
+ }
+
 
 // Analizador Sitactico ->   PARSER   -> Usa la gramática libre de contexto. Al flujo de tokens lo convierte en un Parser tree o árbol de sintaxis concreta, donde cada hoja representa un tokens. Este árbol está ordenado jerarquicamente.
 /*
@@ -25,15 +34,28 @@ program:
 	PROGRAM ID BRACKET_OPEN sentencias* BRACKET_CLOSE;
 	//sentencias* (con simbolo de clausura) es un simbolo no terminal, el cual es una producción que se expande
 sentencias:
-	var_decl
+      var_decl
 	| var_assign
 	| println;
 	//Definición de la producción para sentencia. En este caso de 3 tipos, declaracion, asignación o impresión por pantalla, para refelejar esta producción usamos el operador union "|" 
-var_decl: VAR ID SEMICOLON; //Definición de producción.
-var_assign: ID ASSIGN NUMBER SEMICOLON;
+var_decl: VAR ID SEMICOLON
+{symbolTable.put($ID.text,0);}
+; //Definición de producción.
+var_assign: ID ASSIGN expresion SEMICOLON
+{symbolTable.put($ID.text, $expresion.value);}
+;
 println: PRINTLN expresion SEMICOLON
-{System.out.println("Imprimiendo por pantalla");}; //Acordarse de ponerle el punto y coma a la sentencia, si no salta error en el SimpleLexer
-expresion: NUMBER | ID;
+{System.out.println($expresion.value);}; //Acordarse de ponerle el punto y coma a la sentencia, si no salta error en el SimpleLexer
+expresion returns [Object value]:  //Para usar este atributo hay que insertarle un valor en la produccion en el NUMBER E ID 
+NUMBER {$value=Integer.parseInt( $NUMBER.text) ;}  // Hay que recuperar la información correspondiente a ese token, el lexema->Texto particular identificado por un token (Como instancia de token, el string 5, 6 metc)
+|
+ ID  {$value=symbolTable.get($ID.text);};  //Para recuperar el valor de un número o el identificador debemos agregarle un atributo, y ese atributo se va a usar en los producciones que usan este no terminal y de ahi sacar su valor, por ejemplo la produccion println lo usa
+/*
+returns [Object.value] -> Indica que ese no terminal posee un atributo value de tipo Object.
+Puede ser de cualquier otro tipo, pero con ese Objecto podemos almacenar tanto valores númericos como Strings( en el caso del identificador)-
+
+ */
+
 /*  SEMANTICA
 Grámatica de atributo es escencialmente libre de contexto.
 Libre de contexto con informacion adicional:

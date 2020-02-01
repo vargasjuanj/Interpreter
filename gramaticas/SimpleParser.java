@@ -1,4 +1,8 @@
 // Generated from Simple.g4 by ANTLR 4.8
+
+import java.util.Map;
+import java.util.HashMap;
+
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -92,6 +96,10 @@ public class SimpleParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
+
+
+	Map<String,Object> symbolTable = new HashMap<String,Object>();
+	 
 	public SimpleParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
@@ -232,6 +240,7 @@ public class SimpleParser extends Parser {
 	}
 
 	public static class Var_declContext extends ParserRuleContext {
+		public Token ID;
 		public TerminalNode VAR() { return getToken(SimpleParser.VAR, 0); }
 		public TerminalNode ID() { return getToken(SimpleParser.ID, 0); }
 		public TerminalNode SEMICOLON() { return getToken(SimpleParser.SEMICOLON, 0); }
@@ -258,9 +267,10 @@ public class SimpleParser extends Parser {
 			setState(28);
 			match(VAR);
 			setState(29);
-			match(ID);
+			((Var_declContext)_localctx).ID = match(ID);
 			setState(30);
 			match(SEMICOLON);
+			symbolTable.put((((Var_declContext)_localctx).ID!=null?((Var_declContext)_localctx).ID.getText():null),0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -275,9 +285,13 @@ public class SimpleParser extends Parser {
 	}
 
 	public static class Var_assignContext extends ParserRuleContext {
+		public Token ID;
+		public ExpresionContext expresion;
 		public TerminalNode ID() { return getToken(SimpleParser.ID, 0); }
 		public TerminalNode ASSIGN() { return getToken(SimpleParser.ASSIGN, 0); }
-		public TerminalNode NUMBER() { return getToken(SimpleParser.NUMBER, 0); }
+		public ExpresionContext expresion() {
+			return getRuleContext(ExpresionContext.class,0);
+		}
 		public TerminalNode SEMICOLON() { return getToken(SimpleParser.SEMICOLON, 0); }
 		public Var_assignContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -299,14 +313,15 @@ public class SimpleParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(32);
-			match(ID);
 			setState(33);
-			match(ASSIGN);
+			((Var_assignContext)_localctx).ID = match(ID);
 			setState(34);
-			match(NUMBER);
+			match(ASSIGN);
 			setState(35);
+			((Var_assignContext)_localctx).expresion = expresion();
+			setState(36);
 			match(SEMICOLON);
+			symbolTable.put((((Var_assignContext)_localctx).ID!=null?((Var_assignContext)_localctx).ID.getText():null), ((Var_assignContext)_localctx).expresion.value);
 			}
 		}
 		catch (RecognitionException re) {
@@ -321,6 +336,7 @@ public class SimpleParser extends Parser {
 	}
 
 	public static class PrintlnContext extends ParserRuleContext {
+		public ExpresionContext expresion;
 		public TerminalNode PRINTLN() { return getToken(SimpleParser.PRINTLN, 0); }
 		public ExpresionContext expresion() {
 			return getRuleContext(ExpresionContext.class,0);
@@ -346,13 +362,13 @@ public class SimpleParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(37);
-			match(PRINTLN);
-			setState(38);
-			expresion();
 			setState(39);
+			match(PRINTLN);
+			setState(40);
+			((PrintlnContext)_localctx).expresion = expresion();
+			setState(41);
 			match(SEMICOLON);
-			System.out.println("Imprimiendo por pantalla");
+			System.out.println(((PrintlnContext)_localctx).expresion.value);
 			}
 		}
 		catch (RecognitionException re) {
@@ -367,6 +383,9 @@ public class SimpleParser extends Parser {
 	}
 
 	public static class ExpresionContext extends ParserRuleContext {
+		public Object value;
+		public Token NUMBER;
+		public Token ID;
 		public TerminalNode NUMBER() { return getToken(SimpleParser.NUMBER, 0); }
 		public TerminalNode ID() { return getToken(SimpleParser.ID, 0); }
 		public ExpresionContext(ParserRuleContext parent, int invokingState) {
@@ -386,20 +405,28 @@ public class SimpleParser extends Parser {
 	public final ExpresionContext expresion() throws RecognitionException {
 		ExpresionContext _localctx = new ExpresionContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_expresion);
-		int _la;
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(42);
-			_la = _input.LA(1);
-			if ( !(_la==ID || _la==NUMBER) ) {
-			_errHandler.recoverInline(this);
-			}
-			else {
-				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-				_errHandler.reportMatch(this);
-				consume();
-			}
+			setState(48);
+			_errHandler.sync(this);
+			switch (_input.LA(1)) {
+			case NUMBER:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(44);
+				((ExpresionContext)_localctx).NUMBER = match(NUMBER);
+				((ExpresionContext)_localctx).value = Integer.parseInt( (((ExpresionContext)_localctx).NUMBER!=null?((ExpresionContext)_localctx).NUMBER.getText():null)) ;
+				}
+				break;
+			case ID:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(46);
+				((ExpresionContext)_localctx).ID = match(ID);
+				((ExpresionContext)_localctx).value = symbolTable.get((((ExpresionContext)_localctx).ID!=null?((ExpresionContext)_localctx).ID.getText():null));
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -414,18 +441,20 @@ public class SimpleParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\33/\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2\3\2\3\2\3\2\7\2\23\n\2\f\2\16\2"+
-		"\26\13\2\3\2\3\2\3\3\3\3\3\3\5\3\35\n\3\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3"+
-		"\5\3\5\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\2\2\b\2\4\6\b\n\f\2\3\3\2\31\32"+
-		"\2+\2\16\3\2\2\2\4\34\3\2\2\2\6\36\3\2\2\2\b\"\3\2\2\2\n\'\3\2\2\2\f,"+
-		"\3\2\2\2\16\17\7\3\2\2\17\20\7\31\2\2\20\24\7\24\2\2\21\23\5\4\3\2\22"+
-		"\21\3\2\2\2\23\26\3\2\2\2\24\22\3\2\2\2\24\25\3\2\2\2\25\27\3\2\2\2\26"+
-		"\24\3\2\2\2\27\30\7\25\2\2\30\3\3\2\2\2\31\35\5\6\4\2\32\35\5\b\5\2\33"+
-		"\35\5\n\6\2\34\31\3\2\2\2\34\32\3\2\2\2\34\33\3\2\2\2\35\5\3\2\2\2\36"+
-		"\37\7\4\2\2\37 \7\31\2\2 !\7\30\2\2!\7\3\2\2\2\"#\7\31\2\2#$\7\23\2\2"+
-		"$%\7\32\2\2%&\7\30\2\2&\t\3\2\2\2\'(\7\5\2\2()\5\f\7\2)*\7\30\2\2*+\b"+
-		"\6\1\2+\13\3\2\2\2,-\t\2\2\2-\r\3\2\2\2\4\24\34";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\33\65\4\2\t\2\4\3"+
+		"\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2\3\2\3\2\3\2\7\2\23\n\2\f\2\16"+
+		"\2\26\13\2\3\2\3\2\3\3\3\3\3\3\5\3\35\n\3\3\4\3\4\3\4\3\4\3\4\3\5\3\5"+
+		"\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\5\7\63\n\7\3\7\2"+
+		"\2\b\2\4\6\b\n\f\2\2\2\62\2\16\3\2\2\2\4\34\3\2\2\2\6\36\3\2\2\2\b#\3"+
+		"\2\2\2\n)\3\2\2\2\f\62\3\2\2\2\16\17\7\3\2\2\17\20\7\31\2\2\20\24\7\24"+
+		"\2\2\21\23\5\4\3\2\22\21\3\2\2\2\23\26\3\2\2\2\24\22\3\2\2\2\24\25\3\2"+
+		"\2\2\25\27\3\2\2\2\26\24\3\2\2\2\27\30\7\25\2\2\30\3\3\2\2\2\31\35\5\6"+
+		"\4\2\32\35\5\b\5\2\33\35\5\n\6\2\34\31\3\2\2\2\34\32\3\2\2\2\34\33\3\2"+
+		"\2\2\35\5\3\2\2\2\36\37\7\4\2\2\37 \7\31\2\2 !\7\30\2\2!\"\b\4\1\2\"\7"+
+		"\3\2\2\2#$\7\31\2\2$%\7\23\2\2%&\5\f\7\2&\'\7\30\2\2\'(\b\5\1\2(\t\3\2"+
+		"\2\2)*\7\5\2\2*+\5\f\7\2+,\7\30\2\2,-\b\6\1\2-\13\3\2\2\2./\7\32\2\2/"+
+		"\63\b\7\1\2\60\61\7\31\2\2\61\63\b\7\1\2\62.\3\2\2\2\62\60\3\2\2\2\63"+
+		"\r\3\2\2\2\5\24\34\62";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
