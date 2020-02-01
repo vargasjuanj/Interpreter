@@ -1,10 +1,11 @@
+grammar Expr;
+s : e;
+e: e MUL e  #mult
+ | e ADD e  #Add 
+ | INT		#Int
+ ;
 
-grammar Expr;		
-prog:	(expr NEWLINE)* ;
-expr:	expr ('*'|'/') expr
-    |	expr ('+'|'-') expr
-    |	INT
-    |	'(' expr ')'
-    ;
-NEWLINE : [\r\n]+ ;
-INT     : [0-9]+ ;
+MUL:'*';
+ADD:'+';
+INT: [0-9]+;
+WS:	[ \t\n\r]+ -> skip;
