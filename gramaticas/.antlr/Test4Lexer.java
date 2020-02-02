@@ -1,4 +1,4 @@
-// Generated from c:\antlr\gramaticas\Test4.g4 by ANTLR 4.7.1
+// Generated from c:\antlr\gramaticas\Módulo.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -86,7 +86,7 @@ public class Test4Lexer extends Lexer {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Test4.g4"; }
+	public String getGrammarFileName() { return "Módulo.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
