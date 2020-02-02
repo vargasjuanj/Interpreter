@@ -26,13 +26,19 @@ println: PRINTLN expresion SEMICOLON
 ;
 
 expresion 	returns[Object value]:
-(MIN t1 = factor_o_division {$value=-(int)$t1.value;} 
-|
+(
+	MIN t1 = factor_o_division {$value=-(int)$t1.value;} 
+	|
 t1 = factor_o_division {$value=(int)$t1.value;} 
 
 )
 
 (
+(MIN PLUS t2 = factor_o_division {$value=(int)$value-(int)$t2.value;})
+
+|
+(PLUS MIN t2 = factor_o_division {$value=(int)$value-(int)$t2.value;})
+|
 (PLUS t2 = factor_o_division {$value=(int)$value+(int)$t2.value;})
 |
 (MIN t2 = factor_o_division {$value=(int)$value-(int)$t2.value;})
@@ -48,9 +54,11 @@ t1 = factor_o_division {$value=(int)$t1.value;}
 
 factor_o_division returns[Object value]:
 
-   ( MULT t2 = term {$value=(int)$value*(int)$t2.value;}
+   (
+	    MULT t2 = term {$value=(int)$value*(int)$t2.value;}
    |
-     DIV t2 = term {$value=(int)$value/(int)$t2.value;})*
+    DIV t2 = term {$value=(int)$value/(int)$t2.value;}
+														)*
 
 |
  t1 = term {$value=(int)$t1.value; } 
