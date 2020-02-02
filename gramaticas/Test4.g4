@@ -67,13 +67,15 @@ potencia returns[Object value]:
 
  t1 = term{$value=(int)$t1.value; } 
 
-   ( POWER t2 = term {
-       for(int i=1; i<(int)$t2.value; i++){
-           $value=(int)$value*(int)$t1.value;
-        }
-        $t1.value=$value;
-        
-   }
+   (
+       
+       POWER      
+        (MIN t2 = term 
+{ $value=-(int)Math.pow((int)$value,(int)$t2.value);}
+        |
+     t2 = term 
+{ $value=(int)Math.pow((int)$value,(int)$t2.value);})
+
 
    )*
    
