@@ -1,4 +1,4 @@
-grammar Test2;
+grammar Test3;
 
 @parser::header {
 import java.util.Map;
@@ -21,27 +21,55 @@ var_assign: ID ASSIGN expresion SEMICOLON
 {symbolTable.put($ID.text, $expresion.value);}
  ;
 
-println: PRINTLN expresion SEMICOLON 
-{System.out.println($expresion.value);}
+println: PRINTLN expr SEMICOLON 
+{System.out.println($expr.value);}
+;
+
+
+expr returns[Object value]:
+t1 = potencia {$value=(int)$t1.value;} 
+(
+(MULT  t2=potencia {$value=(int)$value*(int)$t2.value;})
+|
+(PLUS t3=potencia {$value=(int)$value+(int)$t3.value;})
+
+)*
+
 ;
 
 expresion 	returns[Object value]:
-t1 = potencia {$value=(int)$t1.value;} 
-(
-( MULT t2 = potencia 
-{$value=(int)$value*(int)$t2.value;}
-|
-DIV t2 = potencia 
-{$value=(int)$value/(int)$t2.value;})*
 
-( PLUS t3 = factor_o_division {$value=(int)$value+(int)$t3.value;} 
+
+(
+
+
+	MIN t1 = factor_o_division {$value=-(int)$t1.value;} 
+	|
+t1 = factor_o_division {$value=(int)$t1.value;} 
+
+)
+
+(
+MIN PLUS t2 = factor_o_division {$value=(int)$value-(int)$t2.value;}
+
 |
-MIN t3 = factor_o_division {$value=(int)$value-(int)$t3.value;} )+
+PLUS MIN t2 = factor_o_division {$value=(int)$value-(int)$t2.value;}
+|
+PLUS t2 = factor_o_division {$value=(int)$value+(int)$t2.value;}
+|
+MIN t2 = factor_o_division {$value=(int)$value-(int)$t2.value;}
+
+|
+MULT t2 = factor_o_division {$value=(int)$value+(int)$t2.value;}
+|
+DIV t2 = factor_o_division {$value=(int)$value+(int)$t2.value;}
 )*
+
+
 ;
 potencia returns[Object value]:
 
- t1 = term {$value=(int)$t1.value; } 
+ t1 = term{$value=(int)$t1.value; } 
 
    ( POWER t2 = term {
        for(int i=1; i<(int)$t2.value; i++){
@@ -50,10 +78,13 @@ potencia returns[Object value]:
         $t1.value=$value;
    })*
 
+
+
+
  ;
-
 factor_o_division returns[Object value]:
-
+t=potencia {$value=(int)$t.value; } 
+|
    (
 	    MULT t2 = term {$value=(int)$value*(int)$t2.value;}
    |

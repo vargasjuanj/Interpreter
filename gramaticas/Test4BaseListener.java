@@ -1,4 +1,4 @@
-// Generated from Test2.g4 by ANTLR 4.8
+// Generated from Test4.g4 by ANTLR 4.8
 
 import java.util.Map;
 import java.util.HashMap;
@@ -9,119 +9,107 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * This class provides an empty implementation of {@link Test2Listener},
+ * This class provides an empty implementation of {@link Test4Listener},
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-public class Test2BaseListener implements Test2Listener {
+public class Test4BaseListener implements Test4Listener {
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProgram(Test2Parser.ProgramContext ctx) { }
+	@Override public void enterProgram(Test4Parser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitProgram(Test2Parser.ProgramContext ctx) { }
+	@Override public void exitProgram(Test4Parser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSentencias(Test2Parser.SentenciasContext ctx) { }
+	@Override public void enterSentencias(Test4Parser.SentenciasContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSentencias(Test2Parser.SentenciasContext ctx) { }
+	@Override public void exitSentencias(Test4Parser.SentenciasContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVar_decl(Test2Parser.Var_declContext ctx) { }
+	@Override public void enterVar_decl(Test4Parser.Var_declContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVar_decl(Test2Parser.Var_declContext ctx) { }
+	@Override public void exitVar_decl(Test4Parser.Var_declContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVar_assign(Test2Parser.Var_assignContext ctx) { }
+	@Override public void enterVar_assign(Test4Parser.Var_assignContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVar_assign(Test2Parser.Var_assignContext ctx) { }
+	@Override public void exitVar_assign(Test4Parser.Var_assignContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrintln(Test2Parser.PrintlnContext ctx) { }
+	@Override public void enterPrintln(Test4Parser.PrintlnContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrintln(Test2Parser.PrintlnContext ctx) { }
+	@Override public void exitPrintln(Test4Parser.PrintlnContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpresion(Test2Parser.ExpresionContext ctx) { }
+	@Override public void enterExpresion(Test4Parser.ExpresionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpresion(Test2Parser.ExpresionContext ctx) { }
+	@Override public void exitExpresion(Test4Parser.ExpresionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPotencia(Test2Parser.PotenciaContext ctx) { }
+	@Override public void enterFactor_o_division(Test4Parser.Factor_o_divisionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPotencia(Test2Parser.PotenciaContext ctx) { }
+	@Override public void exitFactor_o_division(Test4Parser.Factor_o_divisionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFactor_o_division(Test2Parser.Factor_o_divisionContext ctx) { }
+	@Override public void enterTerm(Test4Parser.TermContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFactor_o_division(Test2Parser.Factor_o_divisionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterTerm(Test2Parser.TermContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTerm(Test2Parser.TermContext ctx) { }
+	@Override public void exitTerm(Test4Parser.TermContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

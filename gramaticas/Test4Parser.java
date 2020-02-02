@@ -1,4 +1,4 @@
-// Generated from Test2.g4 by ANTLR 4.8
+// Generated from Test4.g4 by ANTLR 4.8
 
 import java.util.Map;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class Test2Parser extends Parser {
+public class Test4Parser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.8", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -26,12 +26,11 @@ public class Test2Parser extends Parser {
 		ID=24, NUMBER=25, WS=26;
 	public static final int
 		RULE_program = 0, RULE_sentencias = 1, RULE_var_decl = 2, RULE_var_assign = 3, 
-		RULE_println = 4, RULE_expresion = 5, RULE_potencia = 6, RULE_factor_o_division = 7, 
-		RULE_term = 8;
+		RULE_println = 4, RULE_expresion = 5, RULE_factor_o_division = 6, RULE_term = 7;
 	private static String[] makeRuleNames() {
 		return new String[] {
 			"program", "sentencias", "var_decl", "var_assign", "println", "expresion", 
-			"potencia", "factor_o_division", "term"
+			"factor_o_division", "term"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -87,7 +86,7 @@ public class Test2Parser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Test2.g4"; }
+	public String getGrammarFileName() { return "Test4.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -101,16 +100,16 @@ public class Test2Parser extends Parser {
 	 
 	Map<String,Object> symbolTable = new HashMap<String,Object>();
 	 
-	public Test2Parser(TokenStream input) {
+	public Test4Parser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	public static class ProgramContext extends ParserRuleContext {
-		public TerminalNode PROGRAM() { return getToken(Test2Parser.PROGRAM, 0); }
-		public TerminalNode ID() { return getToken(Test2Parser.ID, 0); }
-		public TerminalNode BRACKET_OPEN() { return getToken(Test2Parser.BRACKET_OPEN, 0); }
-		public TerminalNode BRACKET_CLOSE() { return getToken(Test2Parser.BRACKET_CLOSE, 0); }
+		public TerminalNode PROGRAM() { return getToken(Test4Parser.PROGRAM, 0); }
+		public TerminalNode ID() { return getToken(Test4Parser.ID, 0); }
+		public TerminalNode BRACKET_OPEN() { return getToken(Test4Parser.BRACKET_OPEN, 0); }
+		public TerminalNode BRACKET_CLOSE() { return getToken(Test4Parser.BRACKET_CLOSE, 0); }
 		public List<SentenciasContext> sentencias() {
 			return getRuleContexts(SentenciasContext.class);
 		}
@@ -123,11 +122,11 @@ public class Test2Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_program; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).enterProgram(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).enterProgram(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).exitProgram(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).exitProgram(this);
 		}
 	}
 
@@ -138,27 +137,27 @@ public class Test2Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(18);
+			setState(16);
 			match(PROGRAM);
-			setState(19);
+			setState(17);
 			match(ID);
-			setState(20);
+			setState(18);
 			match(BRACKET_OPEN);
-			setState(24);
+			setState(22);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << VAR) | (1L << PRINTLN) | (1L << ID))) != 0)) {
 				{
 				{
-				setState(21);
+				setState(19);
 				sentencias();
 				}
 				}
-				setState(26);
+				setState(24);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(27);
+			setState(25);
 			match(BRACKET_CLOSE);
 			}
 		}
@@ -189,11 +188,11 @@ public class Test2Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_sentencias; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).enterSentencias(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).enterSentencias(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).exitSentencias(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).exitSentencias(this);
 		}
 	}
 
@@ -201,27 +200,27 @@ public class Test2Parser extends Parser {
 		SentenciasContext _localctx = new SentenciasContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_sentencias);
 		try {
-			setState(32);
+			setState(30);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case VAR:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(29);
+				setState(27);
 				var_decl();
 				}
 				break;
 			case ID:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(30);
+				setState(28);
 				var_assign();
 				}
 				break;
 			case PRINTLN:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(31);
+				setState(29);
 				println();
 				}
 				break;
@@ -242,20 +241,20 @@ public class Test2Parser extends Parser {
 
 	public static class Var_declContext extends ParserRuleContext {
 		public Token ID;
-		public TerminalNode VAR() { return getToken(Test2Parser.VAR, 0); }
-		public TerminalNode ID() { return getToken(Test2Parser.ID, 0); }
-		public TerminalNode SEMICOLON() { return getToken(Test2Parser.SEMICOLON, 0); }
+		public TerminalNode VAR() { return getToken(Test4Parser.VAR, 0); }
+		public TerminalNode ID() { return getToken(Test4Parser.ID, 0); }
+		public TerminalNode SEMICOLON() { return getToken(Test4Parser.SEMICOLON, 0); }
 		public Var_declContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_var_decl; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).enterVar_decl(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).enterVar_decl(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).exitVar_decl(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).exitVar_decl(this);
 		}
 	}
 
@@ -265,11 +264,11 @@ public class Test2Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(34);
+			setState(32);
 			match(VAR);
-			setState(35);
+			setState(33);
 			((Var_declContext)_localctx).ID = match(ID);
-			setState(36);
+			setState(34);
 			match(SEMICOLON);
 			symbolTable.put((((Var_declContext)_localctx).ID!=null?((Var_declContext)_localctx).ID.getText():null),0);
 			}
@@ -288,23 +287,23 @@ public class Test2Parser extends Parser {
 	public static class Var_assignContext extends ParserRuleContext {
 		public Token ID;
 		public ExpresionContext expresion;
-		public TerminalNode ID() { return getToken(Test2Parser.ID, 0); }
-		public TerminalNode ASSIGN() { return getToken(Test2Parser.ASSIGN, 0); }
+		public TerminalNode ID() { return getToken(Test4Parser.ID, 0); }
+		public TerminalNode ASSIGN() { return getToken(Test4Parser.ASSIGN, 0); }
 		public ExpresionContext expresion() {
 			return getRuleContext(ExpresionContext.class,0);
 		}
-		public TerminalNode SEMICOLON() { return getToken(Test2Parser.SEMICOLON, 0); }
+		public TerminalNode SEMICOLON() { return getToken(Test4Parser.SEMICOLON, 0); }
 		public Var_assignContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_var_assign; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).enterVar_assign(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).enterVar_assign(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).exitVar_assign(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).exitVar_assign(this);
 		}
 	}
 
@@ -314,13 +313,13 @@ public class Test2Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(39);
+			setState(37);
 			((Var_assignContext)_localctx).ID = match(ID);
-			setState(40);
+			setState(38);
 			match(ASSIGN);
-			setState(41);
+			setState(39);
 			((Var_assignContext)_localctx).expresion = expresion();
-			setState(42);
+			setState(40);
 			match(SEMICOLON);
 			symbolTable.put((((Var_assignContext)_localctx).ID!=null?((Var_assignContext)_localctx).ID.getText():null), ((Var_assignContext)_localctx).expresion.value);
 			}
@@ -338,22 +337,22 @@ public class Test2Parser extends Parser {
 
 	public static class PrintlnContext extends ParserRuleContext {
 		public ExpresionContext expresion;
-		public TerminalNode PRINTLN() { return getToken(Test2Parser.PRINTLN, 0); }
+		public TerminalNode PRINTLN() { return getToken(Test4Parser.PRINTLN, 0); }
 		public ExpresionContext expresion() {
 			return getRuleContext(ExpresionContext.class,0);
 		}
-		public TerminalNode SEMICOLON() { return getToken(Test2Parser.SEMICOLON, 0); }
+		public TerminalNode SEMICOLON() { return getToken(Test4Parser.SEMICOLON, 0); }
 		public PrintlnContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_println; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).enterPrintln(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).enterPrintln(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).exitPrintln(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).exitPrintln(this);
 		}
 	}
 
@@ -363,11 +362,11 @@ public class Test2Parser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(45);
+			setState(43);
 			match(PRINTLN);
-			setState(46);
+			setState(44);
 			((PrintlnContext)_localctx).expresion = expresion();
-			setState(47);
+			setState(45);
 			match(SEMICOLON);
 			System.out.println(((PrintlnContext)_localctx).expresion.value);
 			}
@@ -385,30 +384,12 @@ public class Test2Parser extends Parser {
 
 	public static class ExpresionContext extends ParserRuleContext {
 		public Object value;
-		public PotenciaContext t1;
-		public PotenciaContext t2;
-		public Factor_o_divisionContext t3;
-		public List<PotenciaContext> potencia() {
-			return getRuleContexts(PotenciaContext.class);
-		}
-		public PotenciaContext potencia(int i) {
-			return getRuleContext(PotenciaContext.class,i);
-		}
-		public List<TerminalNode> MULT() { return getTokens(Test2Parser.MULT); }
-		public TerminalNode MULT(int i) {
-			return getToken(Test2Parser.MULT, i);
-		}
-		public List<TerminalNode> DIV() { return getTokens(Test2Parser.DIV); }
-		public TerminalNode DIV(int i) {
-			return getToken(Test2Parser.DIV, i);
-		}
-		public List<TerminalNode> PLUS() { return getTokens(Test2Parser.PLUS); }
-		public TerminalNode PLUS(int i) {
-			return getToken(Test2Parser.PLUS, i);
-		}
-		public List<TerminalNode> MIN() { return getTokens(Test2Parser.MIN); }
+		public Factor_o_divisionContext t1;
+		public TermContext t;
+		public Factor_o_divisionContext t2;
+		public List<TerminalNode> MIN() { return getTokens(Test4Parser.MIN); }
 		public TerminalNode MIN(int i) {
-			return getToken(Test2Parser.MIN, i);
+			return getToken(Test4Parser.MIN, i);
 		}
 		public List<Factor_o_divisionContext> factor_o_division() {
 			return getRuleContexts(Factor_o_divisionContext.class);
@@ -416,17 +397,39 @@ public class Test2Parser extends Parser {
 		public Factor_o_divisionContext factor_o_division(int i) {
 			return getRuleContext(Factor_o_divisionContext.class,i);
 		}
+		public List<TerminalNode> POWER() { return getTokens(Test4Parser.POWER); }
+		public TerminalNode POWER(int i) {
+			return getToken(Test4Parser.POWER, i);
+		}
+		public List<TerminalNode> PLUS() { return getTokens(Test4Parser.PLUS); }
+		public TerminalNode PLUS(int i) {
+			return getToken(Test4Parser.PLUS, i);
+		}
+		public List<TerminalNode> MULT() { return getTokens(Test4Parser.MULT); }
+		public TerminalNode MULT(int i) {
+			return getToken(Test4Parser.MULT, i);
+		}
+		public List<TerminalNode> DIV() { return getTokens(Test4Parser.DIV); }
+		public TerminalNode DIV(int i) {
+			return getToken(Test4Parser.DIV, i);
+		}
+		public List<TermContext> term() {
+			return getRuleContexts(TermContext.class);
+		}
+		public TermContext term(int i) {
+			return getRuleContext(TermContext.class,i);
+		}
 		public ExpresionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expresion; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).enterExpresion(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).enterExpresion(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).exitExpresion(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).exitExpresion(this);
 		}
 	}
 
@@ -435,168 +438,109 @@ public class Test2Parser extends Parser {
 		enterRule(_localctx, 10, RULE_expresion);
 		int _la;
 		try {
-			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(50);
-			((ExpresionContext)_localctx).t1 = potencia();
-			((ExpresionContext)_localctx).value = (int)((ExpresionContext)_localctx).t1.value;
-			setState(79);
+			setState(55);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
+			case 1:
+				{
+				setState(48);
+				match(MIN);
+				setState(49);
+				((ExpresionContext)_localctx).t1 = factor_o_division();
+				((ExpresionContext)_localctx).value = -(int)((ExpresionContext)_localctx).t1.value;
+				}
+				break;
+			case 2:
+				{
+				setState(52);
+				((ExpresionContext)_localctx).t1 = factor_o_division();
+				((ExpresionContext)_localctx).value = (int)((ExpresionContext)_localctx).t1.value;
+				}
+				break;
+			}
+			setState(89);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PLUS) | (1L << MIN) | (1L << MULT) | (1L << DIV))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PLUS) | (1L << MIN) | (1L << MULT) | (1L << DIV) | (1L << POWER))) != 0)) {
 				{
-				{
-				setState(62);
+				setState(87);
 				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==MULT || _la==DIV) {
+				switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+				case 1:
 					{
-					setState(60);
-					_errHandler.sync(this);
-					switch (_input.LA(1)) {
-					case MULT:
-						{
-						setState(52);
-						match(MULT);
-						setState(53);
-						((ExpresionContext)_localctx).t2 = potencia();
-						((ExpresionContext)_localctx).value = (int)_localctx.value*(int)((ExpresionContext)_localctx).t2.value;
-						}
-						break;
-					case DIV:
-						{
-						setState(56);
-						match(DIV);
-						setState(57);
-						((ExpresionContext)_localctx).t2 = potencia();
-						((ExpresionContext)_localctx).value = (int)_localctx.value/(int)((ExpresionContext)_localctx).t2.value;
-						}
-						break;
-					default:
-						throw new NoViableAltException(this);
-					}
-					}
-					setState(64);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				setState(73); 
-				_errHandler.sync(this);
-				_alt = 1;
-				do {
-					switch (_alt) {
-					case 1:
-						{
-						setState(73);
-						_errHandler.sync(this);
-						switch (_input.LA(1)) {
-						case PLUS:
-							{
-							setState(65);
-							match(PLUS);
-							setState(66);
-							((ExpresionContext)_localctx).t3 = factor_o_division();
-							((ExpresionContext)_localctx).value = (int)_localctx.value+(int)((ExpresionContext)_localctx).t3.value;
-							}
-							break;
-						case MIN:
-							{
-							setState(69);
-							match(MIN);
-							setState(70);
-							((ExpresionContext)_localctx).t3 = factor_o_division();
-							((ExpresionContext)_localctx).value = (int)_localctx.value-(int)((ExpresionContext)_localctx).t3.value;
-							}
-							break;
-						default:
-							throw new NoViableAltException(this);
-						}
-						}
-						break;
-					default:
-						throw new NoViableAltException(this);
-					}
-					setState(75); 
-					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
-				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
-				}
-				}
-				setState(81);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
+					setState(57);
+					match(POWER);
+					setState(58);
+					((ExpresionContext)_localctx).t = term();
 
-	public static class PotenciaContext extends ParserRuleContext {
-		public Object value;
-		public TermContext t1;
-		public TermContext t2;
-		public List<TermContext> term() {
-			return getRuleContexts(TermContext.class);
-		}
-		public TermContext term(int i) {
-			return getRuleContext(TermContext.class,i);
-		}
-		public List<TerminalNode> POWER() { return getTokens(Test2Parser.POWER); }
-		public TerminalNode POWER(int i) {
-			return getToken(Test2Parser.POWER, i);
-		}
-		public PotenciaContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_potencia; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).enterPotencia(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).exitPotencia(this);
-		}
-	}
+					    ((ExpresionContext)_localctx).value = (int) Math.pow((int)_localctx.value,(int)((ExpresionContext)_localctx).t.value); 
 
-	public final PotenciaContext potencia() throws RecognitionException {
-		PotenciaContext _localctx = new PotenciaContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_potencia);
-		int _la;
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(82);
-			((PotenciaContext)_localctx).t1 = term();
-			((PotenciaContext)_localctx).value = (int)((PotenciaContext)_localctx).t1.value; 
-			setState(90);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			while (_la==POWER) {
-				{
-				{
-				setState(84);
-				match(POWER);
-				setState(85);
-				((PotenciaContext)_localctx).t2 = term();
-
-				       for(int i=1; i<(int)((PotenciaContext)_localctx).t2.value; i++){
-				           ((PotenciaContext)_localctx).value = (int)_localctx.value*(int)((PotenciaContext)_localctx).t1.value;
-				        }
-				        ((PotenciaContext)_localctx).t1.value=_localctx.value;
-				   
+					    
+					}
+					break;
+				case 2:
+					{
+					setState(61);
+					match(MIN);
+					setState(62);
+					match(PLUS);
+					setState(63);
+					((ExpresionContext)_localctx).t2 = factor_o_division();
+					((ExpresionContext)_localctx).value = (int)_localctx.value-(int)((ExpresionContext)_localctx).t2.value;
+					}
+					break;
+				case 3:
+					{
+					setState(66);
+					match(PLUS);
+					setState(67);
+					match(MIN);
+					setState(68);
+					((ExpresionContext)_localctx).t2 = factor_o_division();
+					((ExpresionContext)_localctx).value = (int)_localctx.value-(int)((ExpresionContext)_localctx).t2.value;
+					}
+					break;
+				case 4:
+					{
+					setState(71);
+					match(PLUS);
+					setState(72);
+					((ExpresionContext)_localctx).t2 = factor_o_division();
+					((ExpresionContext)_localctx).value = (int)_localctx.value+(int)((ExpresionContext)_localctx).t2.value;
+					}
+					break;
+				case 5:
+					{
+					setState(75);
+					match(MIN);
+					setState(76);
+					((ExpresionContext)_localctx).t2 = factor_o_division();
+					((ExpresionContext)_localctx).value = (int)_localctx.value-(int)((ExpresionContext)_localctx).t2.value;
+					}
+					break;
+				case 6:
+					{
+					setState(79);
+					match(MULT);
+					setState(80);
+					((ExpresionContext)_localctx).t2 = factor_o_division();
+					((ExpresionContext)_localctx).value = (int)_localctx.value+(int)((ExpresionContext)_localctx).t2.value;
+					}
+					break;
+				case 7:
+					{
+					setState(83);
+					match(DIV);
+					setState(84);
+					((ExpresionContext)_localctx).t2 = factor_o_division();
+					((ExpresionContext)_localctx).value = (int)_localctx.value+(int)((ExpresionContext)_localctx).t2.value;
+					}
+					break;
 				}
 				}
-				setState(92);
+				setState(91);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -617,13 +561,13 @@ public class Test2Parser extends Parser {
 		public Object value;
 		public TermContext t2;
 		public TermContext t1;
-		public List<TerminalNode> MULT() { return getTokens(Test2Parser.MULT); }
+		public List<TerminalNode> MULT() { return getTokens(Test4Parser.MULT); }
 		public TerminalNode MULT(int i) {
-			return getToken(Test2Parser.MULT, i);
+			return getToken(Test4Parser.MULT, i);
 		}
-		public List<TerminalNode> DIV() { return getTokens(Test2Parser.DIV); }
+		public List<TerminalNode> DIV() { return getTokens(Test4Parser.DIV); }
 		public TerminalNode DIV(int i) {
-			return getToken(Test2Parser.DIV, i);
+			return getToken(Test4Parser.DIV, i);
 		}
 		public List<TermContext> term() {
 			return getRuleContexts(TermContext.class);
@@ -637,48 +581,48 @@ public class Test2Parser extends Parser {
 		@Override public int getRuleIndex() { return RULE_factor_o_division; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).enterFactor_o_division(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).enterFactor_o_division(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).exitFactor_o_division(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).exitFactor_o_division(this);
 		}
 	}
 
 	public final Factor_o_divisionContext factor_o_division() throws RecognitionException {
 		Factor_o_divisionContext _localctx = new Factor_o_divisionContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_factor_o_division);
+		enterRule(_localctx, 12, RULE_factor_o_division);
 		try {
 			int _alt;
-			setState(121);
+			setState(120);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(103);
+				setState(102);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,9,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
-						setState(101);
+						setState(100);
 						_errHandler.sync(this);
 						switch (_input.LA(1)) {
 						case MULT:
 							{
-							setState(93);
+							setState(92);
 							match(MULT);
-							setState(94);
+							setState(93);
 							((Factor_o_divisionContext)_localctx).t2 = term();
 							((Factor_o_divisionContext)_localctx).value = (int)_localctx.value*(int)((Factor_o_divisionContext)_localctx).t2.value;
 							}
 							break;
 						case DIV:
 							{
-							setState(97);
+							setState(96);
 							match(DIV);
-							setState(98);
+							setState(97);
 							((Factor_o_divisionContext)_localctx).t2 = term();
 							((Factor_o_divisionContext)_localctx).value = (int)_localctx.value/(int)((Factor_o_divisionContext)_localctx).t2.value;
 							}
@@ -688,41 +632,41 @@ public class Test2Parser extends Parser {
 						}
 						} 
 					}
-					setState(105);
+					setState(104);
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,9,_ctx);
+					_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 				}
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(106);
+				setState(105);
 				((Factor_o_divisionContext)_localctx).t1 = term();
 				((Factor_o_divisionContext)_localctx).value = (int)((Factor_o_divisionContext)_localctx).t1.value; 
-				setState(118);
+				setState(117);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,11,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
-						setState(116);
+						setState(115);
 						_errHandler.sync(this);
 						switch (_input.LA(1)) {
 						case MULT:
 							{
-							setState(108);
+							setState(107);
 							match(MULT);
-							setState(109);
+							setState(108);
 							((Factor_o_divisionContext)_localctx).t2 = term();
 							((Factor_o_divisionContext)_localctx).value = (int)_localctx.value*(int)((Factor_o_divisionContext)_localctx).t2.value;
 							}
 							break;
 						case DIV:
 							{
-							setState(112);
+							setState(111);
 							match(DIV);
-							setState(113);
+							setState(112);
 							((Factor_o_divisionContext)_localctx).t2 = term();
 							((Factor_o_divisionContext)_localctx).value = (int)_localctx.value/(int)((Factor_o_divisionContext)_localctx).t2.value;
 							}
@@ -732,9 +676,9 @@ public class Test2Parser extends Parser {
 						}
 						} 
 					}
-					setState(120);
+					setState(119);
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,11,_ctx);
+					_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 				}
 				}
 				break;
@@ -756,41 +700,41 @@ public class Test2Parser extends Parser {
 		public Token NUMBER;
 		public Token ID;
 		public ExpresionContext expresion;
-		public TerminalNode MIN() { return getToken(Test2Parser.MIN, 0); }
-		public TerminalNode NUMBER() { return getToken(Test2Parser.NUMBER, 0); }
-		public TerminalNode ID() { return getToken(Test2Parser.ID, 0); }
-		public TerminalNode PAR_OPEN() { return getToken(Test2Parser.PAR_OPEN, 0); }
+		public TerminalNode MIN() { return getToken(Test4Parser.MIN, 0); }
+		public TerminalNode NUMBER() { return getToken(Test4Parser.NUMBER, 0); }
+		public TerminalNode ID() { return getToken(Test4Parser.ID, 0); }
+		public TerminalNode PAR_OPEN() { return getToken(Test4Parser.PAR_OPEN, 0); }
 		public ExpresionContext expresion() {
 			return getRuleContext(ExpresionContext.class,0);
 		}
-		public TerminalNode PAR_CLOSE() { return getToken(Test2Parser.PAR_CLOSE, 0); }
+		public TerminalNode PAR_CLOSE() { return getToken(Test4Parser.PAR_CLOSE, 0); }
 		public TermContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_term; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).enterTerm(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).enterTerm(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof Test2Listener ) ((Test2Listener)listener).exitTerm(this);
+			if ( listener instanceof Test4Listener ) ((Test4Listener)listener).exitTerm(this);
 		}
 	}
 
 	public final TermContext term() throws RecognitionException {
 		TermContext _localctx = new TermContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_term);
+		enterRule(_localctx, 14, RULE_term);
 		try {
-			setState(135);
+			setState(134);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case MIN:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(123);
+				setState(122);
 				match(MIN);
-				setState(124);
+				setState(123);
 				((TermContext)_localctx).NUMBER = match(NUMBER);
 				((TermContext)_localctx).value = -Integer.parseInt( (((TermContext)_localctx).NUMBER!=null?((TermContext)_localctx).NUMBER.getText():null)) ;
 				}
@@ -798,7 +742,7 @@ public class Test2Parser extends Parser {
 			case NUMBER:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(126);
+				setState(125);
 				((TermContext)_localctx).NUMBER = match(NUMBER);
 				((TermContext)_localctx).value = Integer.parseInt( (((TermContext)_localctx).NUMBER!=null?((TermContext)_localctx).NUMBER.getText():null)) ;
 				}
@@ -806,7 +750,7 @@ public class Test2Parser extends Parser {
 			case ID:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(128);
+				setState(127);
 				((TermContext)_localctx).ID = match(ID);
 				((TermContext)_localctx).value = symbolTable.get((((TermContext)_localctx).ID!=null?((TermContext)_localctx).ID.getText():null));
 				}
@@ -814,12 +758,12 @@ public class Test2Parser extends Parser {
 			case PAR_OPEN:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(130);
+				setState(129);
 				match(PAR_OPEN);
-				setState(131);
+				setState(130);
 				((TermContext)_localctx).expresion = expresion();
 				((TermContext)_localctx).value = ((TermContext)_localctx).expresion.value;
-				setState(133);
+				setState(132);
 				match(PAR_CLOSE);
 				}
 				break;
@@ -839,42 +783,42 @@ public class Test2Parser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\34\u008c\4\2\t\2"+
-		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\3\2\3"+
-		"\2\3\2\3\2\7\2\31\n\2\f\2\16\2\34\13\2\3\2\3\2\3\3\3\3\3\3\5\3#\n\3\3"+
-		"\4\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\7\3\7"+
-		"\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\7\7?\n\7\f\7\16\7B\13\7\3\7\3\7\3\7\3"+
-		"\7\3\7\3\7\3\7\3\7\6\7L\n\7\r\7\16\7M\7\7P\n\7\f\7\16\7S\13\7\3\b\3\b"+
-		"\3\b\3\b\3\b\3\b\7\b[\n\b\f\b\16\b^\13\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3"+
-		"\t\7\th\n\t\f\t\16\tk\13\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\7\t"+
-		"w\n\t\f\t\16\tz\13\t\5\t|\n\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n"+
-		"\3\n\3\n\5\n\u008a\n\n\3\n\2\2\13\2\4\6\b\n\f\16\20\22\2\2\2\u0093\2\24"+
-		"\3\2\2\2\4\"\3\2\2\2\6$\3\2\2\2\b)\3\2\2\2\n/\3\2\2\2\f\64\3\2\2\2\16"+
-		"T\3\2\2\2\20{\3\2\2\2\22\u0089\3\2\2\2\24\25\7\3\2\2\25\26\7\32\2\2\26"+
-		"\32\7\25\2\2\27\31\5\4\3\2\30\27\3\2\2\2\31\34\3\2\2\2\32\30\3\2\2\2\32"+
-		"\33\3\2\2\2\33\35\3\2\2\2\34\32\3\2\2\2\35\36\7\26\2\2\36\3\3\2\2\2\37"+
-		"#\5\6\4\2 #\5\b\5\2!#\5\n\6\2\"\37\3\2\2\2\" \3\2\2\2\"!\3\2\2\2#\5\3"+
-		"\2\2\2$%\7\4\2\2%&\7\32\2\2&\'\7\31\2\2\'(\b\4\1\2(\7\3\2\2\2)*\7\32\2"+
-		"\2*+\7\24\2\2+,\5\f\7\2,-\7\31\2\2-.\b\5\1\2.\t\3\2\2\2/\60\7\5\2\2\60"+
-		"\61\5\f\7\2\61\62\7\31\2\2\62\63\b\6\1\2\63\13\3\2\2\2\64\65\5\16\b\2"+
-		"\65Q\b\7\1\2\66\67\7\b\2\2\678\5\16\b\289\b\7\1\29?\3\2\2\2:;\7\t\2\2"+
-		";<\5\16\b\2<=\b\7\1\2=?\3\2\2\2>\66\3\2\2\2>:\3\2\2\2?B\3\2\2\2@>\3\2"+
-		"\2\2@A\3\2\2\2AK\3\2\2\2B@\3\2\2\2CD\7\6\2\2DE\5\20\t\2EF\b\7\1\2FL\3"+
-		"\2\2\2GH\7\7\2\2HI\5\20\t\2IJ\b\7\1\2JL\3\2\2\2KC\3\2\2\2KG\3\2\2\2LM"+
-		"\3\2\2\2MK\3\2\2\2MN\3\2\2\2NP\3\2\2\2O@\3\2\2\2PS\3\2\2\2QO\3\2\2\2Q"+
-		"R\3\2\2\2R\r\3\2\2\2SQ\3\2\2\2TU\5\22\n\2U\\\b\b\1\2VW\7\n\2\2WX\5\22"+
-		"\n\2XY\b\b\1\2Y[\3\2\2\2ZV\3\2\2\2[^\3\2\2\2\\Z\3\2\2\2\\]\3\2\2\2]\17"+
-		"\3\2\2\2^\\\3\2\2\2_`\7\b\2\2`a\5\22\n\2ab\b\t\1\2bh\3\2\2\2cd\7\t\2\2"+
-		"de\5\22\n\2ef\b\t\1\2fh\3\2\2\2g_\3\2\2\2gc\3\2\2\2hk\3\2\2\2ig\3\2\2"+
-		"\2ij\3\2\2\2j|\3\2\2\2ki\3\2\2\2lm\5\22\n\2mx\b\t\1\2no\7\b\2\2op\5\22"+
-		"\n\2pq\b\t\1\2qw\3\2\2\2rs\7\t\2\2st\5\22\n\2tu\b\t\1\2uw\3\2\2\2vn\3"+
-		"\2\2\2vr\3\2\2\2wz\3\2\2\2xv\3\2\2\2xy\3\2\2\2y|\3\2\2\2zx\3\2\2\2{i\3"+
-		"\2\2\2{l\3\2\2\2|\21\3\2\2\2}~\7\7\2\2~\177\7\33\2\2\177\u008a\b\n\1\2"+
-		"\u0080\u0081\7\33\2\2\u0081\u008a\b\n\1\2\u0082\u0083\7\32\2\2\u0083\u008a"+
-		"\b\n\1\2\u0084\u0085\7\27\2\2\u0085\u0086\5\f\7\2\u0086\u0087\b\n\1\2"+
-		"\u0087\u0088\7\30\2\2\u0088\u008a\3\2\2\2\u0089}\3\2\2\2\u0089\u0080\3"+
-		"\2\2\2\u0089\u0082\3\2\2\2\u0089\u0084\3\2\2\2\u008a\23\3\2\2\2\20\32"+
-		"\">@KMQ\\givx{\u0089";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\34\u008b\4\2\t\2"+
+		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\3\2\3\2\3\2\3"+
+		"\2\7\2\27\n\2\f\2\16\2\32\13\2\3\2\3\2\3\3\3\3\3\3\5\3!\n\3\3\4\3\4\3"+
+		"\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7"+
+		"\3\7\3\7\3\7\5\7:\n\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7"+
+		"\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3"+
+		"\7\7\7Z\n\7\f\7\16\7]\13\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\7\bg\n\b\f"+
+		"\b\16\bj\13\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\7\bv\n\b\f\b\16"+
+		"\by\13\b\5\b{\n\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5\t"+
+		"\u0089\n\t\3\t\2\2\n\2\4\6\b\n\f\16\20\2\2\2\u0095\2\22\3\2\2\2\4 \3\2"+
+		"\2\2\6\"\3\2\2\2\b\'\3\2\2\2\n-\3\2\2\2\f9\3\2\2\2\16z\3\2\2\2\20\u0088"+
+		"\3\2\2\2\22\23\7\3\2\2\23\24\7\32\2\2\24\30\7\25\2\2\25\27\5\4\3\2\26"+
+		"\25\3\2\2\2\27\32\3\2\2\2\30\26\3\2\2\2\30\31\3\2\2\2\31\33\3\2\2\2\32"+
+		"\30\3\2\2\2\33\34\7\26\2\2\34\3\3\2\2\2\35!\5\6\4\2\36!\5\b\5\2\37!\5"+
+		"\n\6\2 \35\3\2\2\2 \36\3\2\2\2 \37\3\2\2\2!\5\3\2\2\2\"#\7\4\2\2#$\7\32"+
+		"\2\2$%\7\31\2\2%&\b\4\1\2&\7\3\2\2\2\'(\7\32\2\2()\7\24\2\2)*\5\f\7\2"+
+		"*+\7\31\2\2+,\b\5\1\2,\t\3\2\2\2-.\7\5\2\2./\5\f\7\2/\60\7\31\2\2\60\61"+
+		"\b\6\1\2\61\13\3\2\2\2\62\63\7\7\2\2\63\64\5\16\b\2\64\65\b\7\1\2\65:"+
+		"\3\2\2\2\66\67\5\16\b\2\678\b\7\1\28:\3\2\2\29\62\3\2\2\29\66\3\2\2\2"+
+		":[\3\2\2\2;<\7\n\2\2<=\5\20\t\2=>\b\7\1\2>Z\3\2\2\2?@\7\7\2\2@A\7\6\2"+
+		"\2AB\5\16\b\2BC\b\7\1\2CZ\3\2\2\2DE\7\6\2\2EF\7\7\2\2FG\5\16\b\2GH\b\7"+
+		"\1\2HZ\3\2\2\2IJ\7\6\2\2JK\5\16\b\2KL\b\7\1\2LZ\3\2\2\2MN\7\7\2\2NO\5"+
+		"\16\b\2OP\b\7\1\2PZ\3\2\2\2QR\7\b\2\2RS\5\16\b\2ST\b\7\1\2TZ\3\2\2\2U"+
+		"V\7\t\2\2VW\5\16\b\2WX\b\7\1\2XZ\3\2\2\2Y;\3\2\2\2Y?\3\2\2\2YD\3\2\2\2"+
+		"YI\3\2\2\2YM\3\2\2\2YQ\3\2\2\2YU\3\2\2\2Z]\3\2\2\2[Y\3\2\2\2[\\\3\2\2"+
+		"\2\\\r\3\2\2\2][\3\2\2\2^_\7\b\2\2_`\5\20\t\2`a\b\b\1\2ag\3\2\2\2bc\7"+
+		"\t\2\2cd\5\20\t\2de\b\b\1\2eg\3\2\2\2f^\3\2\2\2fb\3\2\2\2gj\3\2\2\2hf"+
+		"\3\2\2\2hi\3\2\2\2i{\3\2\2\2jh\3\2\2\2kl\5\20\t\2lw\b\b\1\2mn\7\b\2\2"+
+		"no\5\20\t\2op\b\b\1\2pv\3\2\2\2qr\7\t\2\2rs\5\20\t\2st\b\b\1\2tv\3\2\2"+
+		"\2um\3\2\2\2uq\3\2\2\2vy\3\2\2\2wu\3\2\2\2wx\3\2\2\2x{\3\2\2\2yw\3\2\2"+
+		"\2zh\3\2\2\2zk\3\2\2\2{\17\3\2\2\2|}\7\7\2\2}~\7\33\2\2~\u0089\b\t\1\2"+
+		"\177\u0080\7\33\2\2\u0080\u0089\b\t\1\2\u0081\u0082\7\32\2\2\u0082\u0089"+
+		"\b\t\1\2\u0083\u0084\7\27\2\2\u0084\u0085\5\f\7\2\u0085\u0086\b\t\1\2"+
+		"\u0086\u0087\7\30\2\2\u0087\u0089\3\2\2\2\u0088|\3\2\2\2\u0088\177\3\2"+
+		"\2\2\u0088\u0081\3\2\2\2\u0088\u0083\3\2\2\2\u0089\21\3\2\2\2\r\30 9Y"+
+		"[fhuwz\u0088";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
