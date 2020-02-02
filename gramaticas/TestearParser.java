@@ -19,6 +19,7 @@ public class TestearParser extends Parser {
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
+		int a =2-+2;
 	public static final int
 		PROGRAM=1, VAR=2, PRINTLN=3, PLUS=4, MIN=5, MULT=6, DIV=7, AND=8, OR=9, 
 		NOT=10, GT=11, LT=12, GEQ=13, LEQ=14, EQ=15, NEQ=16, ASSIGN=17, BRACKET_OPEN=18, 
@@ -386,6 +387,10 @@ public class TestearParser extends Parser {
 		public Object value;
 		public Factor_o_divisionContext t1;
 		public Factor_o_divisionContext t2;
+		public List<TerminalNode> MIN() { return getTokens(TestearParser.MIN); }
+		public TerminalNode MIN(int i) {
+			return getToken(TestearParser.MIN, i);
+		}
 		public List<Factor_o_divisionContext> factor_o_division() {
 			return getRuleContexts(Factor_o_divisionContext.class);
 		}
@@ -425,34 +430,62 @@ public class TestearParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(48);
-			((ExpresionContext)_localctx).t1 = factor_o_division();
-			((ExpresionContext)_localctx).value = (int)((ExpresionContext)_localctx).t1.value;
-			setState(64);
+			setState(55);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
+			case 1:
+				{
+				setState(48);
+				match(MIN);
+				setState(49);
+				((ExpresionContext)_localctx).t1 = factor_o_division();
+				((ExpresionContext)_localctx).value = -(int)((ExpresionContext)_localctx).t1.value;
+				}
+				break;
+			case 2:
+				{
+				setState(52);
+				((ExpresionContext)_localctx).t1 = factor_o_division();
+				((ExpresionContext)_localctx).value = (int)((ExpresionContext)_localctx).t1.value;
+				}
+				break;
+			}
+			setState(75);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PLUS) | (1L << MULT) | (1L << DIV))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PLUS) | (1L << MIN) | (1L << MULT) | (1L << DIV))) != 0)) {
 				{
-				setState(62);
+				setState(73);
 				_errHandler.sync(this);
 				switch (_input.LA(1)) {
 				case PLUS:
 					{
 					{
-					setState(50);
+					setState(57);
 					match(PLUS);
-					setState(51);
+					setState(58);
 					((ExpresionContext)_localctx).t2 = factor_o_division();
 					((ExpresionContext)_localctx).value = (int)_localctx.value+(int)((ExpresionContext)_localctx).t2.value;
+					}
+					}
+					break;
+				case MIN:
+					{
+					{
+					setState(61);
+					match(MIN);
+					setState(62);
+					((ExpresionContext)_localctx).t2 = factor_o_division();
+					((ExpresionContext)_localctx).value = (int)_localctx.value-(int)((ExpresionContext)_localctx).t2.value;
 					}
 					}
 					break;
 				case MULT:
 					{
 					{
-					setState(54);
+					setState(65);
 					match(MULT);
-					setState(55);
+					setState(66);
 					((ExpresionContext)_localctx).t2 = factor_o_division();
 					((ExpresionContext)_localctx).value = (int)_localctx.value+(int)((ExpresionContext)_localctx).t2.value;
 					}
@@ -461,9 +494,9 @@ public class TestearParser extends Parser {
 				case DIV:
 					{
 					{
-					setState(58);
+					setState(69);
 					match(DIV);
-					setState(59);
+					setState(70);
 					((ExpresionContext)_localctx).t2 = factor_o_division();
 					((ExpresionContext)_localctx).value = (int)_localctx.value+(int)((ExpresionContext)_localctx).t2.value;
 					}
@@ -473,7 +506,7 @@ public class TestearParser extends Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				setState(66);
+				setState(77);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -492,14 +525,8 @@ public class TestearParser extends Parser {
 
 	public static class Factor_o_divisionContext extends ParserRuleContext {
 		public Object value;
-		public TermContext t1;
 		public TermContext t2;
-		public List<TermContext> term() {
-			return getRuleContexts(TermContext.class);
-		}
-		public TermContext term(int i) {
-			return getRuleContext(TermContext.class,i);
-		}
+		public TermContext t1;
 		public List<TerminalNode> MULT() { return getTokens(TestearParser.MULT); }
 		public TerminalNode MULT(int i) {
 			return getToken(TestearParser.MULT, i);
@@ -507,6 +534,12 @@ public class TestearParser extends Parser {
 		public List<TerminalNode> DIV() { return getTokens(TestearParser.DIV); }
 		public TerminalNode DIV(int i) {
 			return getToken(TestearParser.DIV, i);
+		}
+		public List<TermContext> term() {
+			return getRuleContexts(TermContext.class);
+		}
+		public TermContext term(int i) {
+			return getRuleContext(TermContext.class,i);
 		}
 		public Factor_o_divisionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -527,47 +560,94 @@ public class TestearParser extends Parser {
 		enterRule(_localctx, 12, RULE_factor_o_division);
 		try {
 			int _alt;
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(67);
-			((Factor_o_divisionContext)_localctx).t1 = term();
-			((Factor_o_divisionContext)_localctx).value = (int)((Factor_o_divisionContext)_localctx).t1.value; 
-			setState(79);
+			setState(106);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
-					{
-					setState(77);
-					_errHandler.sync(this);
-					switch (_input.LA(1)) {
-					case MULT:
-						{
-						setState(69);
-						match(MULT);
-						setState(70);
-						((Factor_o_divisionContext)_localctx).t2 = term();
-						((Factor_o_divisionContext)_localctx).value = (int)_localctx.value*(int)((Factor_o_divisionContext)_localctx).t2.value;
-						}
-						break;
-					case DIV:
-						{
-						setState(73);
-						match(DIV);
-						setState(74);
-						((Factor_o_divisionContext)_localctx).t2 = term();
-						((Factor_o_divisionContext)_localctx).value = (int)_localctx.value/(int)((Factor_o_divisionContext)_localctx).t2.value;
-						}
-						break;
-					default:
-						throw new NoViableAltException(this);
-					}
-					} 
-				}
-				setState(81);
+			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(88);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
-			}
+				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
+				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+					if ( _alt==1 ) {
+						{
+						setState(86);
+						_errHandler.sync(this);
+						switch (_input.LA(1)) {
+						case MULT:
+							{
+							setState(78);
+							match(MULT);
+							setState(79);
+							((Factor_o_divisionContext)_localctx).t2 = term();
+							((Factor_o_divisionContext)_localctx).value = (int)_localctx.value*(int)((Factor_o_divisionContext)_localctx).t2.value;
+							}
+							break;
+						case DIV:
+							{
+							setState(82);
+							match(DIV);
+							setState(83);
+							((Factor_o_divisionContext)_localctx).t2 = term();
+							((Factor_o_divisionContext)_localctx).value = (int)_localctx.value/(int)((Factor_o_divisionContext)_localctx).t2.value;
+							}
+							break;
+						default:
+							throw new NoViableAltException(this);
+						}
+						} 
+					}
+					setState(90);
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
+				}
+				}
+				break;
+			case 2:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(91);
+				((Factor_o_divisionContext)_localctx).t1 = term();
+				((Factor_o_divisionContext)_localctx).value = (int)((Factor_o_divisionContext)_localctx).t1.value; 
+				setState(103);
+				_errHandler.sync(this);
+				_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
+				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+					if ( _alt==1 ) {
+						{
+						setState(101);
+						_errHandler.sync(this);
+						switch (_input.LA(1)) {
+						case MULT:
+							{
+							setState(93);
+							match(MULT);
+							setState(94);
+							((Factor_o_divisionContext)_localctx).t2 = term();
+							((Factor_o_divisionContext)_localctx).value = (int)_localctx.value*(int)((Factor_o_divisionContext)_localctx).t2.value;
+							}
+							break;
+						case DIV:
+							{
+							setState(97);
+							match(DIV);
+							setState(98);
+							((Factor_o_divisionContext)_localctx).t2 = term();
+							((Factor_o_divisionContext)_localctx).value = (int)_localctx.value/(int)((Factor_o_divisionContext)_localctx).t2.value;
+							}
+							break;
+						default:
+							throw new NoViableAltException(this);
+						}
+						} 
+					}
+					setState(105);
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
+				}
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -585,6 +665,7 @@ public class TestearParser extends Parser {
 		public Object value;
 		public Token NUMBER;
 		public Token ID;
+		public TerminalNode MIN() { return getToken(TestearParser.MIN, 0); }
 		public TerminalNode NUMBER() { return getToken(TestearParser.NUMBER, 0); }
 		public TerminalNode ID() { return getToken(TestearParser.ID, 0); }
 		public TermContext(ParserRuleContext parent, int invokingState) {
@@ -605,21 +686,31 @@ public class TestearParser extends Parser {
 		TermContext _localctx = new TermContext(_ctx, getState());
 		enterRule(_localctx, 14, RULE_term);
 		try {
-			setState(86);
+			setState(115);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case NUMBER:
+			case MIN:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(82);
+				setState(108);
+				match(MIN);
+				setState(109);
+				((TermContext)_localctx).NUMBER = match(NUMBER);
+				((TermContext)_localctx).value = -Integer.parseInt( (((TermContext)_localctx).NUMBER!=null?((TermContext)_localctx).NUMBER.getText():null)) ;
+				}
+				break;
+			case NUMBER:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(111);
 				((TermContext)_localctx).NUMBER = match(NUMBER);
 				((TermContext)_localctx).value = Integer.parseInt( (((TermContext)_localctx).NUMBER!=null?((TermContext)_localctx).NUMBER.getText():null)) ;
 				}
 				break;
 			case ID:
-				enterOuterAlt(_localctx, 2);
+				enterOuterAlt(_localctx, 3);
 				{
-				setState(84);
+				setState(113);
 				((TermContext)_localctx).ID = match(ID);
 				((TermContext)_localctx).value = symbolTable.get((((TermContext)_localctx).ID!=null?((TermContext)_localctx).ID.getText():null));
 				}
@@ -640,28 +731,35 @@ public class TestearParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\33[\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\33x\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\3\2\3\2\3\2\3\2\7\2"+
 		"\27\n\2\f\2\16\2\32\13\2\3\2\3\2\3\3\3\3\3\3\5\3!\n\3\3\4\3\4\3\4\3\4"+
 		"\3\4\3\5\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7\3"+
-		"\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\7\7A\n\7\f\7\16\7D\13\7\3\b\3\b\3\b"+
-		"\3\b\3\b\3\b\3\b\3\b\3\b\3\b\7\bP\n\b\f\b\16\bS\13\b\3\t\3\t\3\t\3\t\5"+
-		"\tY\n\t\3\t\2\2\n\2\4\6\b\n\f\16\20\2\2\2[\2\22\3\2\2\2\4 \3\2\2\2\6\""+
-		"\3\2\2\2\b\'\3\2\2\2\n-\3\2\2\2\f\62\3\2\2\2\16E\3\2\2\2\20X\3\2\2\2\22"+
-		"\23\7\3\2\2\23\24\7\31\2\2\24\30\7\24\2\2\25\27\5\4\3\2\26\25\3\2\2\2"+
-		"\27\32\3\2\2\2\30\26\3\2\2\2\30\31\3\2\2\2\31\33\3\2\2\2\32\30\3\2\2\2"+
-		"\33\34\7\25\2\2\34\3\3\2\2\2\35!\5\6\4\2\36!\5\b\5\2\37!\5\n\6\2 \35\3"+
-		"\2\2\2 \36\3\2\2\2 \37\3\2\2\2!\5\3\2\2\2\"#\7\4\2\2#$\7\31\2\2$%\7\30"+
-		"\2\2%&\b\4\1\2&\7\3\2\2\2\'(\7\31\2\2()\7\23\2\2)*\5\f\7\2*+\7\30\2\2"+
-		"+,\b\5\1\2,\t\3\2\2\2-.\7\5\2\2./\5\f\7\2/\60\7\30\2\2\60\61\b\6\1\2\61"+
-		"\13\3\2\2\2\62\63\5\16\b\2\63B\b\7\1\2\64\65\7\6\2\2\65\66\5\16\b\2\66"+
-		"\67\b\7\1\2\67A\3\2\2\289\7\b\2\29:\5\16\b\2:;\b\7\1\2;A\3\2\2\2<=\7\t"+
-		"\2\2=>\5\16\b\2>?\b\7\1\2?A\3\2\2\2@\64\3\2\2\2@8\3\2\2\2@<\3\2\2\2AD"+
-		"\3\2\2\2B@\3\2\2\2BC\3\2\2\2C\r\3\2\2\2DB\3\2\2\2EF\5\20\t\2FQ\b\b\1\2"+
-		"GH\7\b\2\2HI\5\20\t\2IJ\b\b\1\2JP\3\2\2\2KL\7\t\2\2LM\5\20\t\2MN\b\b\1"+
-		"\2NP\3\2\2\2OG\3\2\2\2OK\3\2\2\2PS\3\2\2\2QO\3\2\2\2QR\3\2\2\2R\17\3\2"+
-		"\2\2SQ\3\2\2\2TU\7\32\2\2UY\b\t\1\2VW\7\31\2\2WY\b\t\1\2XT\3\2\2\2XV\3"+
-		"\2\2\2Y\21\3\2\2\2\t\30 @BOQX";
+		"\7\3\7\5\7:\n\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3"+
+		"\7\3\7\3\7\7\7L\n\7\f\7\16\7O\13\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\7\b"+
+		"Y\n\b\f\b\16\b\\\13\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\7\bh\n\b"+
+		"\f\b\16\bk\13\b\5\bm\n\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5\tv\n\t\3\t\2\2"+
+		"\n\2\4\6\b\n\f\16\20\2\2\2~\2\22\3\2\2\2\4 \3\2\2\2\6\"\3\2\2\2\b\'\3"+
+		"\2\2\2\n-\3\2\2\2\f9\3\2\2\2\16l\3\2\2\2\20u\3\2\2\2\22\23\7\3\2\2\23"+
+		"\24\7\31\2\2\24\30\7\24\2\2\25\27\5\4\3\2\26\25\3\2\2\2\27\32\3\2\2\2"+
+		"\30\26\3\2\2\2\30\31\3\2\2\2\31\33\3\2\2\2\32\30\3\2\2\2\33\34\7\25\2"+
+		"\2\34\3\3\2\2\2\35!\5\6\4\2\36!\5\b\5\2\37!\5\n\6\2 \35\3\2\2\2 \36\3"+
+		"\2\2\2 \37\3\2\2\2!\5\3\2\2\2\"#\7\4\2\2#$\7\31\2\2$%\7\30\2\2%&\b\4\1"+
+		"\2&\7\3\2\2\2\'(\7\31\2\2()\7\23\2\2)*\5\f\7\2*+\7\30\2\2+,\b\5\1\2,\t"+
+		"\3\2\2\2-.\7\5\2\2./\5\f\7\2/\60\7\30\2\2\60\61\b\6\1\2\61\13\3\2\2\2"+
+		"\62\63\7\7\2\2\63\64\5\16\b\2\64\65\b\7\1\2\65:\3\2\2\2\66\67\5\16\b\2"+
+		"\678\b\7\1\28:\3\2\2\29\62\3\2\2\29\66\3\2\2\2:M\3\2\2\2;<\7\6\2\2<=\5"+
+		"\16\b\2=>\b\7\1\2>L\3\2\2\2?@\7\7\2\2@A\5\16\b\2AB\b\7\1\2BL\3\2\2\2C"+
+		"D\7\b\2\2DE\5\16\b\2EF\b\7\1\2FL\3\2\2\2GH\7\t\2\2HI\5\16\b\2IJ\b\7\1"+
+		"\2JL\3\2\2\2K;\3\2\2\2K?\3\2\2\2KC\3\2\2\2KG\3\2\2\2LO\3\2\2\2MK\3\2\2"+
+		"\2MN\3\2\2\2N\r\3\2\2\2OM\3\2\2\2PQ\7\b\2\2QR\5\20\t\2RS\b\b\1\2SY\3\2"+
+		"\2\2TU\7\t\2\2UV\5\20\t\2VW\b\b\1\2WY\3\2\2\2XP\3\2\2\2XT\3\2\2\2Y\\\3"+
+		"\2\2\2ZX\3\2\2\2Z[\3\2\2\2[m\3\2\2\2\\Z\3\2\2\2]^\5\20\t\2^i\b\b\1\2_"+
+		"`\7\b\2\2`a\5\20\t\2ab\b\b\1\2bh\3\2\2\2cd\7\t\2\2de\5\20\t\2ef\b\b\1"+
+		"\2fh\3\2\2\2g_\3\2\2\2gc\3\2\2\2hk\3\2\2\2ig\3\2\2\2ij\3\2\2\2jm\3\2\2"+
+		"\2ki\3\2\2\2lZ\3\2\2\2l]\3\2\2\2m\17\3\2\2\2no\7\7\2\2op\7\32\2\2pv\b"+
+		"\t\1\2qr\7\32\2\2rv\b\t\1\2st\7\31\2\2tv\b\t\1\2un\3\2\2\2uq\3\2\2\2u"+
+		"s\3\2\2\2v\21\3\2\2\2\r\30 9KMXZgilu";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
