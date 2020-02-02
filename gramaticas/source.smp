@@ -1,4 +1,6 @@
 program miprograma{
+println 2*2/2/2*2*2*2/8;
 
-println 2+2*4;
+
+
 }
