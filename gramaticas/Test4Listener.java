@@ -71,6 +71,16 @@ public interface Test4Listener extends ParseTreeListener {
 	 */
 	void exitExpresion(Test4Parser.ExpresionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link Test4Parser#potencia}.
+	 * @param ctx the parse tree
+	 */
+	void enterPotencia(Test4Parser.PotenciaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link Test4Parser#potencia}.
+	 * @param ctx the parse tree
+	 */
+	void exitPotencia(Test4Parser.PotenciaContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link Test4Parser#factor_o_division}.
 	 * @param ctx the parse tree
 	 */

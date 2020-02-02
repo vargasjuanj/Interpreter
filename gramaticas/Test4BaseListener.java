@@ -91,6 +91,18 @@ public class Test4BaseListener implements Test4Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterPotencia(Test4Parser.PotenciaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPotencia(Test4Parser.PotenciaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFactor_o_division(Test4Parser.Factor_o_divisionContext ctx) { }
 	/**
 	 * {@inheritDoc}
