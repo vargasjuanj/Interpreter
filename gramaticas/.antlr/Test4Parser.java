@@ -513,7 +513,7 @@ public class Test4Parser extends Parser {
 					match(MULT);
 					setState(94);
 					((ExpresionContext)_localctx).t3 = potencia();
-					((ExpresionContext)_localctx).value = (int)_localctx.value+(int)((ExpresionContext)_localctx).t3.value;
+					((ExpresionContext)_localctx).value = (int)_localctx.value*(int)((ExpresionContext)_localctx).t3.value;
 					}
 					break;
 				case 7:
@@ -522,7 +522,7 @@ public class Test4Parser extends Parser {
 					match(DIV);
 					setState(98);
 					((ExpresionContext)_localctx).t3 = potencia();
-					((ExpresionContext)_localctx).value = (int)_localctx.value+(int)((ExpresionContext)_localctx).t3.value;
+					((ExpresionContext)_localctx).value = (int)_localctx.value/(int)((ExpresionContext)_localctx).t3.value;
 					}
 					break;
 				}
@@ -590,6 +590,7 @@ public class Test4Parser extends Parser {
 					           ((PotenciaContext)_localctx).value = (int)_localctx.value*(int)((PotenciaContext)_localctx).t1.value;
 					        }
 					        ((PotenciaContext)_localctx).t1.value=_localctx.value;
+					        
 					   
 					}
 					} 

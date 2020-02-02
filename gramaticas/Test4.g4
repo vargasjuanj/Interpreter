@@ -56,9 +56,9 @@ PLUS t2 = factor_o_division {$value=(int)$value+(int)$t2.value;}
 MIN t2 = factor_o_division {$value=(int)$value-(int)$t2.value;}
 
 |
-MULT t3 = potencia {$value=(int)$value+(int)$t3.value;}
+MULT t3 = potencia {$value=(int)$value*(int)$t3.value;}
 |
-DIV t3 = potencia {$value=(int)$value+(int)$t3.value;}
+DIV t3 = potencia {$value=(int)$value/(int)$t3.value;}
 )*
 
 ;
@@ -72,7 +72,12 @@ potencia returns[Object value]:
            $value=(int)$value*(int)$t1.value;
         }
         $t1.value=$value;
-   })*
+        
+   }
+
+   )*
+   
+   
  ;
 
 factor_o_division returns[Object value]:
