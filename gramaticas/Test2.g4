@@ -28,11 +28,15 @@ println: PRINTLN expresion SEMICOLON
 expresion 	returns[Object value]:
 t1 = potencia {$value=(int)$t1.value;} 
 (
- MULT t2 = potencia {
-{$value=(int)$value*(int)$t2.value;}}
+( MULT t2 = potencia 
+{$value=(int)$value*(int)$t2.value;}
 |
-DIV t2 = potencia {
-{$value=(int)$value/(int)$t2.value;}}
+DIV t2 = potencia 
+{$value=(int)$value/(int)$t2.value;})*
+
+( PLUS t3 = factor_o_division {$value=(int)$value+(int)$t3.value;} 
+|
+MIN t3 = factor_o_division {$value=(int)$value-(int)$t3.value;} )+
 )*
 ;
 potencia returns[Object value]:
