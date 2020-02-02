@@ -19,7 +19,6 @@ public class TestearParser extends Parser {
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
-		int a =2-+2;
 	public static final int
 		PROGRAM=1, VAR=2, PRINTLN=3, PLUS=4, MIN=5, MULT=6, DIV=7, AND=8, OR=9, 
 		NOT=10, GT=11, LT=12, GEQ=13, LEQ=14, EQ=15, NEQ=16, ASSIGN=17, BRACKET_OPEN=18, 
@@ -665,9 +664,15 @@ public class TestearParser extends Parser {
 		public Object value;
 		public Token NUMBER;
 		public Token ID;
+		public ExpresionContext expresion;
 		public TerminalNode MIN() { return getToken(TestearParser.MIN, 0); }
 		public TerminalNode NUMBER() { return getToken(TestearParser.NUMBER, 0); }
 		public TerminalNode ID() { return getToken(TestearParser.ID, 0); }
+		public TerminalNode PAR_OPEN() { return getToken(TestearParser.PAR_OPEN, 0); }
+		public ExpresionContext expresion() {
+			return getRuleContext(ExpresionContext.class,0);
+		}
+		public TerminalNode PAR_CLOSE() { return getToken(TestearParser.PAR_CLOSE, 0); }
 		public TermContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -686,7 +691,7 @@ public class TestearParser extends Parser {
 		TermContext _localctx = new TermContext(_ctx, getState());
 		enterRule(_localctx, 14, RULE_term);
 		try {
-			setState(115);
+			setState(120);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case MIN:
@@ -715,6 +720,18 @@ public class TestearParser extends Parser {
 				((TermContext)_localctx).value = symbolTable.get((((TermContext)_localctx).ID!=null?((TermContext)_localctx).ID.getText():null));
 				}
 				break;
+			case PAR_OPEN:
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(115);
+				match(PAR_OPEN);
+				setState(116);
+				((TermContext)_localctx).expresion = expresion();
+				((TermContext)_localctx).value = ((TermContext)_localctx).expresion.value;
+				setState(118);
+				match(PAR_CLOSE);
+				}
+				break;
 			default:
 				throw new NoViableAltException(this);
 			}
@@ -731,35 +748,36 @@ public class TestearParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\33x\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\33}\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\3\2\3\2\3\2\3\2\7\2"+
 		"\27\n\2\f\2\16\2\32\13\2\3\2\3\2\3\3\3\3\3\3\5\3!\n\3\3\4\3\4\3\4\3\4"+
 		"\3\4\3\5\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7\3"+
 		"\7\3\7\5\7:\n\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3"+
 		"\7\3\7\3\7\7\7L\n\7\f\7\16\7O\13\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\7\b"+
 		"Y\n\b\f\b\16\b\\\13\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\7\bh\n\b"+
-		"\f\b\16\bk\13\b\5\bm\n\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5\tv\n\t\3\t\2\2"+
-		"\n\2\4\6\b\n\f\16\20\2\2\2~\2\22\3\2\2\2\4 \3\2\2\2\6\"\3\2\2\2\b\'\3"+
-		"\2\2\2\n-\3\2\2\2\f9\3\2\2\2\16l\3\2\2\2\20u\3\2\2\2\22\23\7\3\2\2\23"+
-		"\24\7\31\2\2\24\30\7\24\2\2\25\27\5\4\3\2\26\25\3\2\2\2\27\32\3\2\2\2"+
-		"\30\26\3\2\2\2\30\31\3\2\2\2\31\33\3\2\2\2\32\30\3\2\2\2\33\34\7\25\2"+
-		"\2\34\3\3\2\2\2\35!\5\6\4\2\36!\5\b\5\2\37!\5\n\6\2 \35\3\2\2\2 \36\3"+
-		"\2\2\2 \37\3\2\2\2!\5\3\2\2\2\"#\7\4\2\2#$\7\31\2\2$%\7\30\2\2%&\b\4\1"+
-		"\2&\7\3\2\2\2\'(\7\31\2\2()\7\23\2\2)*\5\f\7\2*+\7\30\2\2+,\b\5\1\2,\t"+
-		"\3\2\2\2-.\7\5\2\2./\5\f\7\2/\60\7\30\2\2\60\61\b\6\1\2\61\13\3\2\2\2"+
-		"\62\63\7\7\2\2\63\64\5\16\b\2\64\65\b\7\1\2\65:\3\2\2\2\66\67\5\16\b\2"+
-		"\678\b\7\1\28:\3\2\2\29\62\3\2\2\29\66\3\2\2\2:M\3\2\2\2;<\7\6\2\2<=\5"+
-		"\16\b\2=>\b\7\1\2>L\3\2\2\2?@\7\7\2\2@A\5\16\b\2AB\b\7\1\2BL\3\2\2\2C"+
-		"D\7\b\2\2DE\5\16\b\2EF\b\7\1\2FL\3\2\2\2GH\7\t\2\2HI\5\16\b\2IJ\b\7\1"+
-		"\2JL\3\2\2\2K;\3\2\2\2K?\3\2\2\2KC\3\2\2\2KG\3\2\2\2LO\3\2\2\2MK\3\2\2"+
-		"\2MN\3\2\2\2N\r\3\2\2\2OM\3\2\2\2PQ\7\b\2\2QR\5\20\t\2RS\b\b\1\2SY\3\2"+
-		"\2\2TU\7\t\2\2UV\5\20\t\2VW\b\b\1\2WY\3\2\2\2XP\3\2\2\2XT\3\2\2\2Y\\\3"+
-		"\2\2\2ZX\3\2\2\2Z[\3\2\2\2[m\3\2\2\2\\Z\3\2\2\2]^\5\20\t\2^i\b\b\1\2_"+
-		"`\7\b\2\2`a\5\20\t\2ab\b\b\1\2bh\3\2\2\2cd\7\t\2\2de\5\20\t\2ef\b\b\1"+
-		"\2fh\3\2\2\2g_\3\2\2\2gc\3\2\2\2hk\3\2\2\2ig\3\2\2\2ij\3\2\2\2jm\3\2\2"+
-		"\2ki\3\2\2\2lZ\3\2\2\2l]\3\2\2\2m\17\3\2\2\2no\7\7\2\2op\7\32\2\2pv\b"+
-		"\t\1\2qr\7\32\2\2rv\b\t\1\2st\7\31\2\2tv\b\t\1\2un\3\2\2\2uq\3\2\2\2u"+
-		"s\3\2\2\2v\21\3\2\2\2\r\30 9KMXZgilu";
+		"\f\b\16\bk\13\b\5\bm\n\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3"+
+		"\t\5\t{\n\t\3\t\2\2\n\2\4\6\b\n\f\16\20\2\2\2\u0084\2\22\3\2\2\2\4 \3"+
+		"\2\2\2\6\"\3\2\2\2\b\'\3\2\2\2\n-\3\2\2\2\f9\3\2\2\2\16l\3\2\2\2\20z\3"+
+		"\2\2\2\22\23\7\3\2\2\23\24\7\31\2\2\24\30\7\24\2\2\25\27\5\4\3\2\26\25"+
+		"\3\2\2\2\27\32\3\2\2\2\30\26\3\2\2\2\30\31\3\2\2\2\31\33\3\2\2\2\32\30"+
+		"\3\2\2\2\33\34\7\25\2\2\34\3\3\2\2\2\35!\5\6\4\2\36!\5\b\5\2\37!\5\n\6"+
+		"\2 \35\3\2\2\2 \36\3\2\2\2 \37\3\2\2\2!\5\3\2\2\2\"#\7\4\2\2#$\7\31\2"+
+		"\2$%\7\30\2\2%&\b\4\1\2&\7\3\2\2\2\'(\7\31\2\2()\7\23\2\2)*\5\f\7\2*+"+
+		"\7\30\2\2+,\b\5\1\2,\t\3\2\2\2-.\7\5\2\2./\5\f\7\2/\60\7\30\2\2\60\61"+
+		"\b\6\1\2\61\13\3\2\2\2\62\63\7\7\2\2\63\64\5\16\b\2\64\65\b\7\1\2\65:"+
+		"\3\2\2\2\66\67\5\16\b\2\678\b\7\1\28:\3\2\2\29\62\3\2\2\29\66\3\2\2\2"+
+		":M\3\2\2\2;<\7\6\2\2<=\5\16\b\2=>\b\7\1\2>L\3\2\2\2?@\7\7\2\2@A\5\16\b"+
+		"\2AB\b\7\1\2BL\3\2\2\2CD\7\b\2\2DE\5\16\b\2EF\b\7\1\2FL\3\2\2\2GH\7\t"+
+		"\2\2HI\5\16\b\2IJ\b\7\1\2JL\3\2\2\2K;\3\2\2\2K?\3\2\2\2KC\3\2\2\2KG\3"+
+		"\2\2\2LO\3\2\2\2MK\3\2\2\2MN\3\2\2\2N\r\3\2\2\2OM\3\2\2\2PQ\7\b\2\2QR"+
+		"\5\20\t\2RS\b\b\1\2SY\3\2\2\2TU\7\t\2\2UV\5\20\t\2VW\b\b\1\2WY\3\2\2\2"+
+		"XP\3\2\2\2XT\3\2\2\2Y\\\3\2\2\2ZX\3\2\2\2Z[\3\2\2\2[m\3\2\2\2\\Z\3\2\2"+
+		"\2]^\5\20\t\2^i\b\b\1\2_`\7\b\2\2`a\5\20\t\2ab\b\b\1\2bh\3\2\2\2cd\7\t"+
+		"\2\2de\5\20\t\2ef\b\b\1\2fh\3\2\2\2g_\3\2\2\2gc\3\2\2\2hk\3\2\2\2ig\3"+
+		"\2\2\2ij\3\2\2\2jm\3\2\2\2ki\3\2\2\2lZ\3\2\2\2l]\3\2\2\2m\17\3\2\2\2n"+
+		"o\7\7\2\2op\7\32\2\2p{\b\t\1\2qr\7\32\2\2r{\b\t\1\2st\7\31\2\2t{\b\t\1"+
+		"\2uv\7\26\2\2vw\5\f\7\2wx\b\t\1\2xy\7\27\2\2y{\3\2\2\2zn\3\2\2\2zq\3\2"+
+		"\2\2zs\3\2\2\2zu\3\2\2\2{\21\3\2\2\2\r\30 9KMXZgilz";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

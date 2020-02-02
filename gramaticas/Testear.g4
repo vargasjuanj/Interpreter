@@ -29,7 +29,9 @@ expresion 	returns[Object value]:
 (MIN t1 = factor_o_division {$value=-(int)$t1.value;} 
 |
 t1 = factor_o_division {$value=(int)$t1.value;} 
+
 )
+
 (
 (PLUS t2 = factor_o_division {$value=(int)$value+(int)$t2.value;})
 |
@@ -40,6 +42,8 @@ t1 = factor_o_division {$value=(int)$t1.value;}
 |
 (DIV t2 = factor_o_division {$value=(int)$value+(int)$t2.value;})
 )*
+
+
 ;
 
 factor_o_division returns[Object value]:
@@ -70,6 +74,8 @@ MIN NUMBER {$value=-Integer.parseInt( $NUMBER.text) ;}
     NUMBER {$value=Integer.parseInt( $NUMBER.text) ;}
 	| 
 	ID {$value=symbolTable.get($ID.text);}
+	|
+	PAR_OPEN expresion {$value=$expresion.value;} PAR_CLOSE
     ;
 
 PROGRAM: 'program';
