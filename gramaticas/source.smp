@@ -1,5 +1,6 @@
 program miprograma{
 
-println   2**-3;
+println   4%20;
+println 2+5%2+2%2;
 
 }

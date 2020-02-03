@@ -1,4 +1,4 @@
-grammar Simple; //Encabezado. PUede llevar otras configuraciones.
+grammar Básica_Teoria; //Encabezado. PUede llevar otras configuraciones.
 @parser::header{
 import java.util.Map;
 import java.util.HashMap;

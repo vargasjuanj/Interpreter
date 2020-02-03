@@ -46,6 +46,11 @@ POWER t = term {
     )*
 
     |
+    MOD t0 = suma_o_resta {$value=(int)$value%(int)$t0.value;}
+    |
+   MOD MIN t0 = suma_o_resta {$value=(int)$value%-(int)$t0.value;}
+
+    |
 MIN PLUS t2 = factor_o_division {$value=(int)$value-(int)$t2.value;}
 
 |
@@ -101,7 +106,14 @@ factor_o_division returns[Object value]:
  ;
 
 
+suma_o_resta returns[Object value]:
+t1 = term {$value=(int)$t1.value; } 
 
+   ( PLUS t2 = term {$value=(int)$value+(int)$t2.value;}
+   |
+     MIN t2 = term {$value=(int)$value-(int)$t2.value;})*
+
+;
 
 
 
@@ -127,6 +139,7 @@ MIN: '-';
 MULT: '*';
 DIV: '/';
 POWER: '**';
+MOD:'%';
 
 AND: '&&';
 OR: '||';
