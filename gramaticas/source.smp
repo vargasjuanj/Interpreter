@@ -1,6 +1,9 @@
-program miprograma{
+program miProgram {
 
-println   4%20;
-println 2+5%2+2%2;
+if(false){
+    println 2+2*4;
+}else{
+    println 9;
+}
 
 }
