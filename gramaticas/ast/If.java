@@ -1,6 +1,7 @@
 package ast;
 
 import java.util.List;
+import java.util.Map;
 
 public class If implements ASTNode {
 private ASTNode condition;
@@ -12,14 +13,14 @@ private List<ASTNode> elsebody;
         this.body = body;
         this.elsebody = elsebody;
     }
-    public Object execute(){
-        if((boolean)condition.execute()){
+    public Object execute(Map<String,Object> symbolTable){
+        if((boolean)condition.execute(symbolTable)) {
             for (ASTNode n : body) {
-                n.execute();
+                n.execute(symbolTable);
             }
         }else{
             for (ASTNode n : elsebody) {
-                n.execute();
+                n.execute(symbolTable);
             }
         }
         return null;

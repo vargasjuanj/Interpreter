@@ -1,20 +1,33 @@
 grammar Simple;
 @parser::header {
 import ast.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 }
 @parser::members {
 }
 
 program returns [ASTNode node]:
- 	{List<ASTNode> body= new ArrayList();}
+ 	{
+		 List<ASTNode> body= new ArrayList();
+	 	Map<String,Object> symbolTable= new HashMap<String,Object>();
+	 }
 	PROGRAM ID BRACKET_OPEN ( sentence {body.add($sentence.node);} )* BRACKET_CLOSE
 	{for (ASTNode n : body){
-		n.execute();
+		n.execute(symbolTable);
 	}}
  	;
 
 sentence returns [ASTNode node]:
-  println {$node=$println.node;} | conditional {$node=$conditional.node;}
+  println {$node=$println.node;} 
+  	|
+   conditional {$node=$conditional.node;}
+   |
+   var_decl {$node= $var_decl.node;}
+   |
+   var_assign {$node= $var_assign.node;}
  	;
 
 
@@ -34,6 +47,15 @@ conditional returns [ASTNode node]:
 			 BRACKET_CLOSE
 			{$node= new If($expression.node,body,elsebody);}
 ;
+
+var_decl returns [ASTNode node]:
+VAR ID SEMICOLON {$node= new VarDecl($ID.text);}
+;
+
+var_assign returns [ASTNode node]:
+ID ASSIGN expression SEMICOLON {$node= new VarAssign($ID.text, $expression.node);}
+;
+
 expression returns [ASTNode node]:
 	t1 = factor {$node=$t1.node;}
 	(PLUS t2 = factor {$node=new Addition($node, $t2.node);})*
@@ -49,6 +71,8 @@ term returns [ASTNode node]:
 	PAR_OPEN expression PAR_CLOSE {$node=$expression.node;} 
     |
 	BOOLEAN {$node= new Constant(Boolean.parseBoolean($BOOLEAN.text));}
+	|
+	ID {$node = new VarRef($ID.text);}
     ;
 
 

@@ -1,5 +1,7 @@
 package ast;
 
-public interface ASTNode{
-public Object execute();
+import java.util.Map;
+
+public interface ASTNode {
+public Object execute(Map<String,Object> symbolTable);
 }

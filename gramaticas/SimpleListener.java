@@ -1,6 +1,10 @@
 // Generated from Simple.g4 by ANTLR 4.8
 
 import ast.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -49,6 +53,26 @@ public interface SimpleListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitConditional(SimpleParser.ConditionalContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SimpleParser#var_decl}.
+	 * @param ctx the parse tree
+	 */
+	void enterVar_decl(SimpleParser.Var_declContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SimpleParser#var_decl}.
+	 * @param ctx the parse tree
+	 */
+	void exitVar_decl(SimpleParser.Var_declContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SimpleParser#var_assign}.
+	 * @param ctx the parse tree
+	 */
+	void enterVar_assign(SimpleParser.Var_assignContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SimpleParser#var_assign}.
+	 * @param ctx the parse tree
+	 */
+	void exitVar_assign(SimpleParser.Var_assignContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SimpleParser#expression}.
 	 * @param ctx the parse tree

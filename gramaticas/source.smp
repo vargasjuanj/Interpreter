@@ -1,9 +1,12 @@
 program miProgram {
+var x;
 
+x=5;
+y=10;
 if(false){
     println 2+2*4;
 }else{
-    println 9;
+    println x+y;
 }
 
 }
