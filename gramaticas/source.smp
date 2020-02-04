@@ -1,10 +1,12 @@
 program miProgram {
 var x;
-x=2;
+x=10;
+var y;
+y=20;
 if(true){
     var x;
     x=5;
- println x;
+ println x+y;
 
 }else{
 
@@ -14,10 +16,11 @@ println x;
 
 if(true){
     var x;
-    x=3;
+    x=4;
  println x;
 
 }else{
 
 }
+println x;
 }

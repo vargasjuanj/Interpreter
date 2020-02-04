@@ -7,13 +7,14 @@ import java.util.List;
 import java.util.ArrayList;
 }
 @parser::members {
+	
+		 List<ASTNode> body= new ArrayList();
+	Map<String,Object> symbolTable= new HashMap<String,Object>();
+	 
 }
 
 program returns [ASTNode node]:
- 	{
-		 List<ASTNode> body= new ArrayList();
-	 	Map<String,Object> symbolTable= new HashMap<String,Object>();
-	 }
+ 
 	PROGRAM ID BRACKET_OPEN ( sentence {   
 	try{
 	$sentence.node.execute(symbolTable);
@@ -44,7 +45,7 @@ println returns [ASTNode node]:
 conditional :
 {
 	 List<ASTNode> conditionalBody= new ArrayList();
-	 	Map<String,Object> symbolTable= new HashMap<String,Object>();
+	 	Map<String,Object> conditionalSymbolTable= new HashMap<String,Object>();
 	 }
 			 IF PAR_OPEN expression  PAR_CLOSE BRACKET_OPEN
 			 { List<ASTNode> body = new ArrayList();}
@@ -55,7 +56,11 @@ conditional :
 			(s2=sentence {elsebody.add($s2.node);})*
 			 BRACKET_CLOSE
 			{ASTNode node= new If($expression.node,body,elsebody);
-			node.execute(symbolTable);		
+			try{
+			node.execute(conditionalSymbolTable);		
+			}catch(Exception e){
+			node.execute(symbolTable);
+			}
 			}
 
 			
