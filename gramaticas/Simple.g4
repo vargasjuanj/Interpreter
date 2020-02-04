@@ -73,6 +73,13 @@ term returns [ASTNode node]:
 	BOOLEAN {$node= new Constant(Boolean.parseBoolean($BOOLEAN.text));}
 	|
 	ID {$node = new VarRef($ID.text);}
+	|
+	NUMBER {$node= new Constant(Integer.parseInt($NUMBER.text));}
+	 (POW n=NUMBER {
+		 ASTNode node2= new Constant(Integer.parseInt($n.text));
+		 
+	 $node= new Power($node,node2);}
+	  )*
     ;
 
 
@@ -86,6 +93,7 @@ PLUS: '+';
 MIN: '-';
 MULT: '*';
 DIV: '/';
+POW:'**';
 
 AND: '&&';
 OR: '||';
