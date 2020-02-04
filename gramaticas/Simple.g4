@@ -14,17 +14,15 @@ program returns [ASTNode node]:
 		 List<ASTNode> body= new ArrayList();
 	 	Map<String,Object> symbolTable= new HashMap<String,Object>();
 	 }
-	PROGRAM ID BRACKET_OPEN ( sentence {body.add($sentence.node);   } )* BRACKET_CLOSE
-	{
-		    
-		for (ASTNode n : body){
+	PROGRAM ID BRACKET_OPEN ( sentence {   
 	try{
-		n.execute(symbolTable);
+	$sentence.node.execute(symbolTable);
 	}catch(Exception e){}
+
 	
-	}
-	   
-	}
+
+	} )* BRACKET_CLOSE
+	
  	;
 
 sentence returns [ASTNode node]:
@@ -46,7 +44,7 @@ println returns [ASTNode node]:
 conditional :
 {
 	 List<ASTNode> conditionalBody= new ArrayList();
-	 	Map<String,Object> symbolsTable= new HashMap<String,Object>();
+	 	Map<String,Object> symbolTable= new HashMap<String,Object>();
 	 }
 			 IF PAR_OPEN expression  PAR_CLOSE BRACKET_OPEN
 			 { List<ASTNode> body = new ArrayList();}
@@ -57,7 +55,7 @@ conditional :
 			(s2=sentence {elsebody.add($s2.node);})*
 			 BRACKET_CLOSE
 			{ASTNode node= new If($expression.node,body,elsebody);
-			node.execute(symbolsTable);		
+			node.execute(symbolTable);		
 			}
 
 			

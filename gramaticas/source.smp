@@ -10,4 +10,14 @@ if(true){
 
 }
 println x;
+
+
+if(true){
+    var x;
+    x=3;
+ println x;
+
+}else{
+
+}
 }
