@@ -14,16 +14,23 @@ program returns [ASTNode node]:
 		 List<ASTNode> body= new ArrayList();
 	 	Map<String,Object> symbolTable= new HashMap<String,Object>();
 	 }
-	PROGRAM ID BRACKET_OPEN ( sentence {body.add($sentence.node);} )* BRACKET_CLOSE
-	{for (ASTNode n : body){
+	PROGRAM ID BRACKET_OPEN ( sentence {body.add($sentence.node);   } )* BRACKET_CLOSE
+	{
+		    
+		for (ASTNode n : body){
+	try{
 		n.execute(symbolTable);
-	}}
+	}catch(Exception e){}
+	
+	}
+	   
+	}
  	;
 
 sentence returns [ASTNode node]:
   println {$node=$println.node;} 
   	|
-   conditional {$node=$conditional.node;}
+   conditional 
    |
    var_decl {$node= $var_decl.node;}
    |
@@ -36,7 +43,11 @@ println returns [ASTNode node]:
 	PRINTLN expression {$node= new Println($expression.node);} SEMICOLON 
 	;
 
-conditional returns [ASTNode node]:
+conditional :
+{
+	 List<ASTNode> conditionalBody= new ArrayList();
+	 	Map<String,Object> symbolsTable= new HashMap<String,Object>();
+	 }
 			 IF PAR_OPEN expression  PAR_CLOSE BRACKET_OPEN
 			 { List<ASTNode> body = new ArrayList();}
 			 (s1=sentence {body.add($s1.node);})*
@@ -45,12 +56,17 @@ conditional returns [ASTNode node]:
 			 { List<ASTNode> elsebody = new ArrayList();}
 			(s2=sentence {elsebody.add($s2.node);})*
 			 BRACKET_CLOSE
-			{$node= new If($expression.node,body,elsebody);}
+			{ASTNode node= new If($expression.node,body,elsebody);
+			node.execute(symbolsTable);		
+			}
+
+			
 ;
 
 var_decl returns [ASTNode node]:
 VAR ID SEMICOLON {$node= new VarDecl($ID.text);}
 ;
+
 
 var_assign returns [ASTNode node]:
 ID ASSIGN expression SEMICOLON {$node= new VarAssign($ID.text, $expression.node);}

@@ -1,7 +1,13 @@
 program miProgram {
 var x;
 x=2;
-var y;
-y=3;
-println 4+3+2*2*x**y;
+if(true){
+    var x;
+    x=5;
+ println x;
+
+}else{
+
+}
+println x;
 }
