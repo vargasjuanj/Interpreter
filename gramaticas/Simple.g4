@@ -80,6 +80,15 @@ term returns [ASTNode node]:
 		 
 	 $node= new Power($node,node2);}
 	  )*
+
+	  |
+	  ID {$node = new VarRef($ID.text);}
+	 (POW n=ID {
+		 ASTNode node2= new VarRef($n.text);
+		 
+	 $node= new Power($node,node2);}
+	  )*
+
     ;
 
 
