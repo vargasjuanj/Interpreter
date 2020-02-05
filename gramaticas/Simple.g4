@@ -10,6 +10,7 @@ import java.util.ArrayList;
 	
 		 List<ASTNode> body= new ArrayList();
 	Map<String,Object> symbolTable= new HashMap<String,Object>();
+
 	 
 }
 
@@ -44,8 +45,9 @@ println returns [ASTNode node]:
 
 conditional :
 {
+   Map<String,Object> conditionalSymbolTable= new HashMap<String,Object>();
 	 List<ASTNode> conditionalBody= new ArrayList();
-	 	Map<String,Object> conditionalSymbolTable= new HashMap<String,Object>();
+
 	 }
 			 IF PAR_OPEN expression  PAR_CLOSE BRACKET_OPEN
 			 { List<ASTNode> body = new ArrayList();}
@@ -53,14 +55,16 @@ conditional :
 			 BRACKET_CLOSE
 			 ELSE BRACKET_OPEN
 			 { List<ASTNode> elsebody = new ArrayList();}
-			(s2=sentence {elsebody.add($s2.node);})*
+			(s2=sentence {elsebody.add($s2.node);} )*
 			 BRACKET_CLOSE
 			{ASTNode node= new If($expression.node,body,elsebody);
 			try{
 			node.execute(conditionalSymbolTable);		
 			}catch(Exception e){
+				
 			node.execute(symbolTable);
 			}
+
 			}
 
 			

@@ -105,6 +105,7 @@ public class SimpleParser extends Parser {
 		
 			 List<ASTNode> body= new ArrayList();
 		Map<String,Object> symbolTable= new HashMap<String,Object>();
+
 		 
 
 	public SimpleParser(TokenStream input) {
@@ -368,8 +369,9 @@ public class SimpleParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 
+			   Map<String,Object> conditionalSymbolTable= new HashMap<String,Object>();
 				 List<ASTNode> conditionalBody= new ArrayList();
-				 	Map<String,Object> conditionalSymbolTable= new HashMap<String,Object>();
+
 				 
 			setState(49);
 			match(IF);
@@ -425,8 +427,10 @@ public class SimpleParser extends Parser {
 						try{
 						node.execute(conditionalSymbolTable);		
 						}catch(Exception e){
+							
 						node.execute(symbolTable);
 						}
+
 						
 			}
 		}

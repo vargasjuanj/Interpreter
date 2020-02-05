@@ -2,25 +2,13 @@ program miProgram {
 var x;
 x=10;
 var y;
-y=20;
+y=30;
 if(true){
-    var x;
-    x=5;
- println x+y;
-
+var x;
+x=5;
+println x+y;
 }else{
 
 }
-println x;
-
-
-if(true){
-    var x;
-    x=4;
- println x;
-
-}else{
-
-}
-println x;
+println y+x; //error cuando sumo toma el valor de if de la x
 }
