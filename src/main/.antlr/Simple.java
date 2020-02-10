@@ -1,6 +1,6 @@
-// Generated from Simple.g4 by ANTLR 4.8
+// Generated from c:\antlr\src\main\Simple.g4 by ANTLR 4.7.1
 
-
+import ast.*;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
@@ -16,8 +16,8 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class SimpleParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.8", RuntimeMetaData.VERSION); }
+public class Simple extends Parser {
+	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -26,36 +26,28 @@ public class SimpleParser extends Parser {
 		PROGRAM=1, VAR=2, PRINTLN=3, IF=4, ELSE=5, PLUS=6, MIN=7, MULT=8, DIV=9, 
 		POW=10, AND=11, OR=12, NOT=13, GT=14, LT=15, GEQ=16, LEQ=17, EQ=18, NEQ=19, 
 		ASSIGN=20, BRACKET_OPEN=21, BRACKET_CLOSE=22, PAR_OPEN=23, PAR_CLOSE=24, 
-		SEMICOLON=25, BOOLEAN=26, ID=27, NUMBER=28, WS=29;
+		SEMICOLON=25, BOOLEAN=26, ID=27, NUMBER=28, WS=29, LETRA=30, GUION=31;
 	public static final int
 		RULE_program = 0, RULE_sentence = 1, RULE_println = 2, RULE_conditional = 3, 
 		RULE_var_decl = 4, RULE_var_assign = 5, RULE_expression = 6, RULE_factor = 7, 
 		RULE_term = 8;
-	private static String[] makeRuleNames() {
-		return new String[] {
-			"program", "sentence", "println", "conditional", "var_decl", "var_assign", 
-			"expression", "factor", "term"
-		};
-	}
-	public static final String[] ruleNames = makeRuleNames();
+	public static final String[] ruleNames = {
+		"program", "sentence", "println", "conditional", "var_decl", "var_assign", 
+		"expression", "factor", "term"
+	};
 
-	private static String[] makeLiteralNames() {
-		return new String[] {
-			null, "'program'", "'var'", "'println'", "'if'", "'else'", "'+'", "'-'", 
-			"'*'", "'/'", "'**'", "'&&'", "'||'", "'|'", "'>'", "'<'", "'>='", "'<='", 
-			"'=='", "'!='", "'='", "'{'", "'}'", "'('", "')'", "';'"
-		};
-	}
-	private static final String[] _LITERAL_NAMES = makeLiteralNames();
-	private static String[] makeSymbolicNames() {
-		return new String[] {
-			null, "PROGRAM", "VAR", "PRINTLN", "IF", "ELSE", "PLUS", "MIN", "MULT", 
-			"DIV", "POW", "AND", "OR", "NOT", "GT", "LT", "GEQ", "LEQ", "EQ", "NEQ", 
-			"ASSIGN", "BRACKET_OPEN", "BRACKET_CLOSE", "PAR_OPEN", "PAR_CLOSE", "SEMICOLON", 
-			"BOOLEAN", "ID", "NUMBER", "WS"
-		};
-	}
-	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
+	private static final String[] _LITERAL_NAMES = {
+		null, "'program'", "'var'", "'println'", "'if'", "'else'", "'+'", "'-'", 
+		"'*'", "'/'", "'**'", "'&&'", "'||'", "'|'", "'>'", "'<'", "'>='", "'<='", 
+		"'=='", "'!='", "'='", "'{'", "'}'", "'('", "')'", "';'", null, null, 
+		null, null, null, "'_'"
+	};
+	private static final String[] _SYMBOLIC_NAMES = {
+		null, "PROGRAM", "VAR", "PRINTLN", "IF", "ELSE", "PLUS", "MIN", "MULT", 
+		"DIV", "POW", "AND", "OR", "NOT", "GT", "LT", "GEQ", "LEQ", "EQ", "NEQ", 
+		"ASSIGN", "BRACKET_OPEN", "BRACKET_CLOSE", "PAR_OPEN", "PAR_CLOSE", "SEMICOLON", 
+		"BOOLEAN", "ID", "NUMBER", "WS", "LETRA", "GUION"
+	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**
@@ -108,18 +100,17 @@ public class SimpleParser extends Parser {
 
 		 
 
-	public SimpleParser(TokenStream input) {
+	public Simple(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
-
 	public static class ProgramContext extends ParserRuleContext {
 		public ASTNode node;
 		public SentenceContext sentence;
-		public TerminalNode PROGRAM() { return getToken(SimpleParser.PROGRAM, 0); }
-		public TerminalNode ID() { return getToken(SimpleParser.ID, 0); }
-		public TerminalNode BRACKET_OPEN() { return getToken(SimpleParser.BRACKET_OPEN, 0); }
-		public TerminalNode BRACKET_CLOSE() { return getToken(SimpleParser.BRACKET_CLOSE, 0); }
+		public TerminalNode PROGRAM() { return getToken(Simple.PROGRAM, 0); }
+		public TerminalNode ID() { return getToken(Simple.ID, 0); }
+		public TerminalNode BRACKET_OPEN() { return getToken(Simple.BRACKET_OPEN, 0); }
+		public TerminalNode BRACKET_CLOSE() { return getToken(Simple.BRACKET_CLOSE, 0); }
 		public List<SentenceContext> sentence() {
 			return getRuleContexts(SentenceContext.class);
 		}
@@ -130,11 +121,6 @@ public class SimpleParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_program; }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SimpleVisitor ) return ((SimpleVisitor<? extends T>)visitor).visitProgram(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ProgramContext program() throws RecognitionException {
@@ -208,11 +194,6 @@ public class SimpleParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_sentence; }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SimpleVisitor ) return ((SimpleVisitor<? extends T>)visitor).visitSentence(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final SentenceContext sentence() throws RecognitionException {
@@ -271,20 +252,15 @@ public class SimpleParser extends Parser {
 	public static class PrintlnContext extends ParserRuleContext {
 		public ASTNode node;
 		public ExpressionContext expression;
-		public TerminalNode PRINTLN() { return getToken(SimpleParser.PRINTLN, 0); }
+		public TerminalNode PRINTLN() { return getToken(Simple.PRINTLN, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public TerminalNode SEMICOLON() { return getToken(SimpleParser.SEMICOLON, 0); }
+		public TerminalNode SEMICOLON() { return getToken(Simple.SEMICOLON, 0); }
 		public PrintlnContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_println; }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SimpleVisitor ) return ((SimpleVisitor<? extends T>)visitor).visitPrintln(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final PrintlnContext println() throws RecognitionException {
@@ -317,21 +293,21 @@ public class SimpleParser extends Parser {
 		public ExpressionContext expression;
 		public SentenceContext s1;
 		public SentenceContext s2;
-		public TerminalNode IF() { return getToken(SimpleParser.IF, 0); }
-		public TerminalNode PAR_OPEN() { return getToken(SimpleParser.PAR_OPEN, 0); }
+		public TerminalNode IF() { return getToken(Simple.IF, 0); }
+		public TerminalNode PAR_OPEN() { return getToken(Simple.PAR_OPEN, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public TerminalNode PAR_CLOSE() { return getToken(SimpleParser.PAR_CLOSE, 0); }
-		public List<TerminalNode> BRACKET_OPEN() { return getTokens(SimpleParser.BRACKET_OPEN); }
+		public TerminalNode PAR_CLOSE() { return getToken(Simple.PAR_CLOSE, 0); }
+		public List<TerminalNode> BRACKET_OPEN() { return getTokens(Simple.BRACKET_OPEN); }
 		public TerminalNode BRACKET_OPEN(int i) {
-			return getToken(SimpleParser.BRACKET_OPEN, i);
+			return getToken(Simple.BRACKET_OPEN, i);
 		}
-		public List<TerminalNode> BRACKET_CLOSE() { return getTokens(SimpleParser.BRACKET_CLOSE); }
+		public List<TerminalNode> BRACKET_CLOSE() { return getTokens(Simple.BRACKET_CLOSE); }
 		public TerminalNode BRACKET_CLOSE(int i) {
-			return getToken(SimpleParser.BRACKET_CLOSE, i);
+			return getToken(Simple.BRACKET_CLOSE, i);
 		}
-		public TerminalNode ELSE() { return getToken(SimpleParser.ELSE, 0); }
+		public TerminalNode ELSE() { return getToken(Simple.ELSE, 0); }
 		public List<SentenceContext> sentence() {
 			return getRuleContexts(SentenceContext.class);
 		}
@@ -342,11 +318,6 @@ public class SimpleParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_conditional; }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SimpleVisitor ) return ((SimpleVisitor<? extends T>)visitor).visitConditional(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ConditionalContext conditional() throws RecognitionException {
@@ -436,18 +407,13 @@ public class SimpleParser extends Parser {
 	public static class Var_declContext extends ParserRuleContext {
 		public ASTNode node;
 		public Token ID;
-		public TerminalNode VAR() { return getToken(SimpleParser.VAR, 0); }
-		public TerminalNode ID() { return getToken(SimpleParser.ID, 0); }
-		public TerminalNode SEMICOLON() { return getToken(SimpleParser.SEMICOLON, 0); }
+		public TerminalNode VAR() { return getToken(Simple.VAR, 0); }
+		public TerminalNode ID() { return getToken(Simple.ID, 0); }
+		public TerminalNode SEMICOLON() { return getToken(Simple.SEMICOLON, 0); }
 		public Var_declContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_var_decl; }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SimpleVisitor ) return ((SimpleVisitor<? extends T>)visitor).visitVar_decl(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Var_declContext var_decl() throws RecognitionException {
@@ -480,21 +446,16 @@ public class SimpleParser extends Parser {
 		public ASTNode node;
 		public Token ID;
 		public ExpressionContext expression;
-		public TerminalNode ID() { return getToken(SimpleParser.ID, 0); }
-		public TerminalNode ASSIGN() { return getToken(SimpleParser.ASSIGN, 0); }
+		public TerminalNode ID() { return getToken(Simple.ID, 0); }
+		public TerminalNode ASSIGN() { return getToken(Simple.ASSIGN, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public TerminalNode SEMICOLON() { return getToken(SimpleParser.SEMICOLON, 0); }
+		public TerminalNode SEMICOLON() { return getToken(Simple.SEMICOLON, 0); }
 		public Var_assignContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_var_assign; }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SimpleVisitor ) return ((SimpleVisitor<? extends T>)visitor).visitVar_assign(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Var_assignContext var_assign() throws RecognitionException {
@@ -535,19 +496,14 @@ public class SimpleParser extends Parser {
 		public FactorContext factor(int i) {
 			return getRuleContext(FactorContext.class,i);
 		}
-		public List<TerminalNode> PLUS() { return getTokens(SimpleParser.PLUS); }
+		public List<TerminalNode> PLUS() { return getTokens(Simple.PLUS); }
 		public TerminalNode PLUS(int i) {
-			return getToken(SimpleParser.PLUS, i);
+			return getToken(Simple.PLUS, i);
 		}
 		public ExpressionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expression; }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SimpleVisitor ) return ((SimpleVisitor<? extends T>)visitor).visitExpression(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ExpressionContext expression() throws RecognitionException {
@@ -600,19 +556,14 @@ public class SimpleParser extends Parser {
 		public TermContext term(int i) {
 			return getRuleContext(TermContext.class,i);
 		}
-		public List<TerminalNode> MULT() { return getTokens(SimpleParser.MULT); }
+		public List<TerminalNode> MULT() { return getTokens(Simple.MULT); }
 		public TerminalNode MULT(int i) {
-			return getToken(SimpleParser.MULT, i);
+			return getToken(Simple.MULT, i);
 		}
 		public FactorContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_factor; }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SimpleVisitor ) return ((SimpleVisitor<? extends T>)visitor).visitFactor(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final FactorContext factor() throws RecognitionException {
@@ -662,33 +613,28 @@ public class SimpleParser extends Parser {
 		public Token BOOLEAN;
 		public Token ID;
 		public Token n;
-		public List<TerminalNode> NUMBER() { return getTokens(SimpleParser.NUMBER); }
+		public List<TerminalNode> NUMBER() { return getTokens(Simple.NUMBER); }
 		public TerminalNode NUMBER(int i) {
-			return getToken(SimpleParser.NUMBER, i);
+			return getToken(Simple.NUMBER, i);
 		}
-		public TerminalNode PAR_OPEN() { return getToken(SimpleParser.PAR_OPEN, 0); }
+		public TerminalNode PAR_OPEN() { return getToken(Simple.PAR_OPEN, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public TerminalNode PAR_CLOSE() { return getToken(SimpleParser.PAR_CLOSE, 0); }
-		public TerminalNode BOOLEAN() { return getToken(SimpleParser.BOOLEAN, 0); }
-		public List<TerminalNode> ID() { return getTokens(SimpleParser.ID); }
+		public TerminalNode PAR_CLOSE() { return getToken(Simple.PAR_CLOSE, 0); }
+		public TerminalNode BOOLEAN() { return getToken(Simple.BOOLEAN, 0); }
+		public List<TerminalNode> ID() { return getTokens(Simple.ID); }
 		public TerminalNode ID(int i) {
-			return getToken(SimpleParser.ID, i);
+			return getToken(Simple.ID, i);
 		}
-		public List<TerminalNode> POW() { return getTokens(SimpleParser.POW); }
+		public List<TerminalNode> POW() { return getTokens(Simple.POW); }
 		public TerminalNode POW(int i) {
-			return getToken(SimpleParser.POW, i);
+			return getToken(Simple.POW, i);
 		}
 		public TermContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_term; }
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SimpleVisitor ) return ((SimpleVisitor<? extends T>)visitor).visitTerm(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final TermContext term() throws RecognitionException {
@@ -805,37 +751,37 @@ public class SimpleParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\37\u0093\4\2\t\2"+
-		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\3\2\3"+
-		"\2\3\2\3\2\3\2\3\2\7\2\33\n\2\f\2\16\2\36\13\2\3\2\3\2\3\3\3\3\3\3\3\3"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\5\3,\n\3\3\4\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5"+
-		"\3\5\3\5\3\5\3\5\3\5\3\5\7\5=\n\5\f\5\16\5@\13\5\3\5\3\5\3\5\3\5\3\5\3"+
-		"\5\3\5\7\5I\n\5\f\5\16\5L\13\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\7\3\7"+
-		"\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b\3\b\7\bb\n\b\f\b\16\be\13\b\3\t\3"+
-		"\t\3\t\3\t\3\t\3\t\7\tm\n\t\f\t\16\tp\13\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n"+
-		"\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\7\n\u0082\n\n\f\n\16\n\u0085\13\n"+
-		"\3\n\3\n\3\n\3\n\3\n\7\n\u008c\n\n\f\n\16\n\u008f\13\n\5\n\u0091\n\n\3"+
-		"\n\2\2\13\2\4\6\b\n\f\16\20\22\2\2\2\u0098\2\24\3\2\2\2\4+\3\2\2\2\6-"+
-		"\3\2\2\2\b\62\3\2\2\2\nP\3\2\2\2\fU\3\2\2\2\16[\3\2\2\2\20f\3\2\2\2\22"+
-		"\u0090\3\2\2\2\24\25\7\3\2\2\25\26\7\35\2\2\26\34\7\27\2\2\27\30\5\4\3"+
-		"\2\30\31\b\2\1\2\31\33\3\2\2\2\32\27\3\2\2\2\33\36\3\2\2\2\34\32\3\2\2"+
-		"\2\34\35\3\2\2\2\35\37\3\2\2\2\36\34\3\2\2\2\37 \7\30\2\2 \3\3\2\2\2!"+
-		"\"\5\6\4\2\"#\b\3\1\2#,\3\2\2\2$,\5\b\5\2%&\5\n\6\2&\'\b\3\1\2\',\3\2"+
-		"\2\2()\5\f\7\2)*\b\3\1\2*,\3\2\2\2+!\3\2\2\2+$\3\2\2\2+%\3\2\2\2+(\3\2"+
-		"\2\2,\5\3\2\2\2-.\7\5\2\2./\5\16\b\2/\60\b\4\1\2\60\61\7\33\2\2\61\7\3"+
-		"\2\2\2\62\63\b\5\1\2\63\64\7\6\2\2\64\65\7\31\2\2\65\66\5\16\b\2\66\67"+
-		"\7\32\2\2\678\7\27\2\28>\b\5\1\29:\5\4\3\2:;\b\5\1\2;=\3\2\2\2<9\3\2\2"+
-		"\2=@\3\2\2\2><\3\2\2\2>?\3\2\2\2?A\3\2\2\2@>\3\2\2\2AB\7\30\2\2BC\7\7"+
-		"\2\2CD\7\27\2\2DJ\b\5\1\2EF\5\4\3\2FG\b\5\1\2GI\3\2\2\2HE\3\2\2\2IL\3"+
-		"\2\2\2JH\3\2\2\2JK\3\2\2\2KM\3\2\2\2LJ\3\2\2\2MN\7\30\2\2NO\b\5\1\2O\t"+
-		"\3\2\2\2PQ\7\4\2\2QR\7\35\2\2RS\7\33\2\2ST\b\6\1\2T\13\3\2\2\2UV\7\35"+
-		"\2\2VW\7\26\2\2WX\5\16\b\2XY\7\33\2\2YZ\b\7\1\2Z\r\3\2\2\2[\\\5\20\t\2"+
-		"\\c\b\b\1\2]^\7\b\2\2^_\5\20\t\2_`\b\b\1\2`b\3\2\2\2a]\3\2\2\2be\3\2\2"+
-		"\2ca\3\2\2\2cd\3\2\2\2d\17\3\2\2\2ec\3\2\2\2fg\5\22\n\2gn\b\t\1\2hi\7"+
-		"\n\2\2ij\5\22\n\2jk\b\t\1\2km\3\2\2\2lh\3\2\2\2mp\3\2\2\2nl\3\2\2\2no"+
-		"\3\2\2\2o\21\3\2\2\2pn\3\2\2\2qr\7\36\2\2r\u0091\b\n\1\2st\7\31\2\2tu"+
-		"\5\16\b\2uv\7\32\2\2vw\b\n\1\2w\u0091\3\2\2\2xy\7\34\2\2y\u0091\b\n\1"+
-		"\2z{\7\35\2\2{\u0091\b\n\1\2|}\7\36\2\2}\u0083\b\n\1\2~\177\7\f\2\2\177"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3!\u0093\4\2\t\2\4"+
+		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\3\2\3\2"+
+		"\3\2\3\2\3\2\3\2\7\2\33\n\2\f\2\16\2\36\13\2\3\2\3\2\3\3\3\3\3\3\3\3\3"+
+		"\3\3\3\3\3\3\3\3\3\3\3\5\3,\n\3\3\4\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3"+
+		"\5\3\5\3\5\3\5\3\5\3\5\7\5=\n\5\f\5\16\5@\13\5\3\5\3\5\3\5\3\5\3\5\3\5"+
+		"\3\5\7\5I\n\5\f\5\16\5L\13\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3"+
+		"\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b\3\b\7\bb\n\b\f\b\16\be\13\b\3\t\3\t"+
+		"\3\t\3\t\3\t\3\t\7\tm\n\t\f\t\16\tp\13\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3"+
+		"\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\7\n\u0082\n\n\f\n\16\n\u0085\13\n\3"+
+		"\n\3\n\3\n\3\n\3\n\7\n\u008c\n\n\f\n\16\n\u008f\13\n\5\n\u0091\n\n\3\n"+
+		"\2\2\13\2\4\6\b\n\f\16\20\22\2\2\2\u0098\2\24\3\2\2\2\4+\3\2\2\2\6-\3"+
+		"\2\2\2\b\62\3\2\2\2\nP\3\2\2\2\fU\3\2\2\2\16[\3\2\2\2\20f\3\2\2\2\22\u0090"+
+		"\3\2\2\2\24\25\7\3\2\2\25\26\7\35\2\2\26\34\7\27\2\2\27\30\5\4\3\2\30"+
+		"\31\b\2\1\2\31\33\3\2\2\2\32\27\3\2\2\2\33\36\3\2\2\2\34\32\3\2\2\2\34"+
+		"\35\3\2\2\2\35\37\3\2\2\2\36\34\3\2\2\2\37 \7\30\2\2 \3\3\2\2\2!\"\5\6"+
+		"\4\2\"#\b\3\1\2#,\3\2\2\2$,\5\b\5\2%&\5\n\6\2&\'\b\3\1\2\',\3\2\2\2()"+
+		"\5\f\7\2)*\b\3\1\2*,\3\2\2\2+!\3\2\2\2+$\3\2\2\2+%\3\2\2\2+(\3\2\2\2,"+
+		"\5\3\2\2\2-.\7\5\2\2./\5\16\b\2/\60\b\4\1\2\60\61\7\33\2\2\61\7\3\2\2"+
+		"\2\62\63\b\5\1\2\63\64\7\6\2\2\64\65\7\31\2\2\65\66\5\16\b\2\66\67\7\32"+
+		"\2\2\678\7\27\2\28>\b\5\1\29:\5\4\3\2:;\b\5\1\2;=\3\2\2\2<9\3\2\2\2=@"+
+		"\3\2\2\2><\3\2\2\2>?\3\2\2\2?A\3\2\2\2@>\3\2\2\2AB\7\30\2\2BC\7\7\2\2"+
+		"CD\7\27\2\2DJ\b\5\1\2EF\5\4\3\2FG\b\5\1\2GI\3\2\2\2HE\3\2\2\2IL\3\2\2"+
+		"\2JH\3\2\2\2JK\3\2\2\2KM\3\2\2\2LJ\3\2\2\2MN\7\30\2\2NO\b\5\1\2O\t\3\2"+
+		"\2\2PQ\7\4\2\2QR\7\35\2\2RS\7\33\2\2ST\b\6\1\2T\13\3\2\2\2UV\7\35\2\2"+
+		"VW\7\26\2\2WX\5\16\b\2XY\7\33\2\2YZ\b\7\1\2Z\r\3\2\2\2[\\\5\20\t\2\\c"+
+		"\b\b\1\2]^\7\b\2\2^_\5\20\t\2_`\b\b\1\2`b\3\2\2\2a]\3\2\2\2be\3\2\2\2"+
+		"ca\3\2\2\2cd\3\2\2\2d\17\3\2\2\2ec\3\2\2\2fg\5\22\n\2gn\b\t\1\2hi\7\n"+
+		"\2\2ij\5\22\n\2jk\b\t\1\2km\3\2\2\2lh\3\2\2\2mp\3\2\2\2nl\3\2\2\2no\3"+
+		"\2\2\2o\21\3\2\2\2pn\3\2\2\2qr\7\36\2\2r\u0091\b\n\1\2st\7\31\2\2tu\5"+
+		"\16\b\2uv\7\32\2\2vw\b\n\1\2w\u0091\3\2\2\2xy\7\34\2\2y\u0091\b\n\1\2"+
+		"z{\7\35\2\2{\u0091\b\n\1\2|}\7\36\2\2}\u0083\b\n\1\2~\177\7\f\2\2\177"+
 		"\u0080\7\36\2\2\u0080\u0082\b\n\1\2\u0081~\3\2\2\2\u0082\u0085\3\2\2\2"+
 		"\u0083\u0081\3\2\2\2\u0083\u0084\3\2\2\2\u0084\u0091\3\2\2\2\u0085\u0083"+
 		"\3\2\2\2\u0086\u0087\7\35\2\2\u0087\u008d\b\n\1\2\u0088\u0089\7\f\2\2"+

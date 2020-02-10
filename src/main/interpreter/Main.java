@@ -1,5 +1,4 @@
 
-
 import java.io.FileInputStream;
 import java.io.InputStream;
 
@@ -21,9 +20,9 @@ inputFile = "C:/antlr/source.smp";
         if (inputFile != null ) is= new FileInputStream(inputFile);
         
         CharStream input = CharStreams.fromStream(is);
-        SimpleLexer lexer = new SimpleLexer(input);
+       VocabularyLexer lexer = new VocabularyLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        SimpleParser parser = new SimpleParser(tokens);
+        Simple parser = new Simple(tokens);
         parser.setBuildParseTree(true);
         ParseTree tree = parser.program();
 

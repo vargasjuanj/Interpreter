@@ -4,6 +4,7 @@ import java.util.Map;
 public class VarDecl implements ASTNode {
 private String name;
 
+
     public VarDecl(String name) {
         this.name = name;
     }

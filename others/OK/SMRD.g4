@@ -1,4 +1,4 @@
-grammar Testear;
+grammar SMRD;
 
 @parser::header {
 import java.util.Map;

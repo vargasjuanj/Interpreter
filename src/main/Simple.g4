@@ -1,12 +1,18 @@
-grammar Simple;
-@parser::header {
+parser grammar Simple;
+
+options{
+tokenVocab= VocabularyLexer;
+language= Java;
+}
+
+@header {
 import ast.*;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 }
-@parser::members {
+@members {
 	
 		 List<ASTNode> body= new ArrayList();
 	Map<String,Object> symbolTable= new HashMap<String,Object>();
@@ -115,46 +121,4 @@ term returns [ASTNode node]:
     ;
 
 
-PROGRAM: 'program';
-VAR: 'var';
-PRINTLN: 'println';
-IF:'if';
-ELSE:'else';
-
-PLUS: '+';
-MIN: '-';
-MULT: '*';
-DIV: '/';
-POW:'**';
-
-AND: '&&';
-OR: '||';
-NOT: '|';
-
-GT: '>';
-LT: '<';
-GEQ: '>=';
-LEQ: '<=';
-EQ: '==';
-NEQ: '!=';
-
-ASSIGN: '=';
-
-BRACKET_OPEN: '{';
-BRACKET_CLOSE: '}';
-
-PAR_OPEN: '(';
-PAR_CLOSE: ')';
-
-SEMICOLON: ';';
-
-BOOLEAN: 'true' | 'false';
-
-ID: [a-zA-Z_][a-zA-Z0-9_]*;
-
-
-
-NUMBER: [0-9]+;
-
-WS: [ \t\n\r]+ -> skip;
 

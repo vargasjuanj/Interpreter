@@ -1,3 +1,5 @@
 program miProgram {
-println 10;
+var x;
+x=10;
+println(x+20);
 }

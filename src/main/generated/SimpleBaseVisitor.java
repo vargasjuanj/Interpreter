@@ -23,61 +23,61 @@ public class SimpleBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitProgram(SimpleParser.ProgramContext ctx) { return visitChildren(ctx); }
+	@Override public T visitProgram(Simple.ProgramContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSentence(SimpleParser.SentenceContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSentence(Simple.SentenceContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitPrintln(SimpleParser.PrintlnContext ctx) { return visitChildren(ctx); }
+	@Override public T visitPrintln(Simple.PrintlnContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitConditional(SimpleParser.ConditionalContext ctx) { return visitChildren(ctx); }
+	@Override public T visitConditional(Simple.ConditionalContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitVar_decl(SimpleParser.Var_declContext ctx) { return visitChildren(ctx); }
+	@Override public T visitVar_decl(Simple.Var_declContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitVar_assign(SimpleParser.Var_assignContext ctx) { return visitChildren(ctx); }
+	@Override public T visitVar_assign(Simple.Var_assignContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExpression(SimpleParser.ExpressionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitExpression(Simple.ExpressionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitFactor(SimpleParser.FactorContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFactor(Simple.FactorContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitTerm(SimpleParser.TermContext ctx) { return visitChildren(ctx); }
+	@Override public T visitTerm(Simple.TermContext ctx) { return visitChildren(ctx); }
 }

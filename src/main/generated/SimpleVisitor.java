@@ -10,64 +10,64 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
  * This interface defines a complete generic visitor for a parse tree produced
- * by {@link SimpleParser}.
+ * by {@link Simple}.
  *
  * @param <T> The return type of the visit operation. Use {@link Void} for
  * operations with no return type.
  */
 public interface SimpleVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#program}.
+	 * Visit a parse tree produced by {@link Simple#program}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitProgram(SimpleParser.ProgramContext ctx);
+	T visitProgram(Simple.ProgramContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#sentence}.
+	 * Visit a parse tree produced by {@link Simple#sentence}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSentence(SimpleParser.SentenceContext ctx);
+	T visitSentence(Simple.SentenceContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#println}.
+	 * Visit a parse tree produced by {@link Simple#println}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPrintln(SimpleParser.PrintlnContext ctx);
+	T visitPrintln(Simple.PrintlnContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#conditional}.
+	 * Visit a parse tree produced by {@link Simple#conditional}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitConditional(SimpleParser.ConditionalContext ctx);
+	T visitConditional(Simple.ConditionalContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#var_decl}.
+	 * Visit a parse tree produced by {@link Simple#var_decl}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVar_decl(SimpleParser.Var_declContext ctx);
+	T visitVar_decl(Simple.Var_declContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#var_assign}.
+	 * Visit a parse tree produced by {@link Simple#var_assign}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVar_assign(SimpleParser.Var_assignContext ctx);
+	T visitVar_assign(Simple.Var_assignContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#expression}.
+	 * Visit a parse tree produced by {@link Simple#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpression(SimpleParser.ExpressionContext ctx);
+	T visitExpression(Simple.ExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#factor}.
+	 * Visit a parse tree produced by {@link Simple#factor}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFactor(SimpleParser.FactorContext ctx);
+	T visitFactor(Simple.FactorContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SimpleParser#term}.
+	 * Visit a parse tree produced by {@link Simple#term}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTerm(SimpleParser.TermContext ctx);
+	T visitTerm(Simple.TermContext ctx);
 }
