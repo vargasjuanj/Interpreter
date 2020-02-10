@@ -1,6 +1,6 @@
 // Generated from Simple.g4 by ANTLR 4.8
 
-import ast.*;
+
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
